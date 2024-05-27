@@ -26,7 +26,7 @@ class TwoViewModel(
 ) : ViewModel() {
 
     // 検索結果
-    fun searchResults(inputText: String): List<item> = runBlocking {
+    fun searchResults(inputText: String): List<Item> = runBlocking {
         val client = HttpClient(Android)
 
         return@runBlocking GlobalScope.async {
@@ -39,7 +39,7 @@ class TwoViewModel(
 
             val jsonItems = jsonBody.optJSONArray("items")!!
 
-            val items = mutableListOf<item>()
+            val items = mutableListOf<Item>()
 
             for (i in 0 until jsonItems.length()) {
                 val jsonItem = jsonItems.optJSONObject(i)!!
@@ -52,7 +52,7 @@ class TwoViewModel(
                 val openIssuesCount = jsonItem.optLong("open_issues_count")
 
                 items.add(
-                    item(
+                    Item(
                         name = name,
                         ownerIconUrl = ownerIconUrl,
                         language = context.getString(R.string.written_language, language),
@@ -72,7 +72,7 @@ class TwoViewModel(
 }
 
 @Parcelize
-data class item(
+data class Item(
     val name: String,
     val ownerIconUrl: String,
     val language: String,
