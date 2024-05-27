@@ -21,11 +21,8 @@ import kotlinx.parcelize.Parcelize
 import org.json.JSONObject
 import java.util.Date
 
-/**
- * TwoFragment で使う
- */
-class OneViewModel(
-    val context: Context
+class TwoViewModel(
+    val context: Context,
 ) : ViewModel() {
 
     // 検索結果
