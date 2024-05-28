@@ -15,7 +15,7 @@ import jp.co.yumemi.android.codecheck.TopActivity.Companion.lastSearchDate
 
 class RepositoryDetailFragment : Fragment(R.layout.fragment_two) {
 
-    private val args: TwoFragmentArgs by navArgs()
+    private val args: RepositoryDetailFragmentArgs by navArgs()
 
     private lateinit var binding: FragmentTwoBinding
 
