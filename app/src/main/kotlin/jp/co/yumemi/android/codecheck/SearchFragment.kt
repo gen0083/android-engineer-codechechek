@@ -47,9 +47,8 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
                             adapter.submitList(this)
                         }
                     }
-                    return@setOnEditorActionListener true
                 }
-                return@setOnEditorActionListener false
+                return@setOnEditorActionListener true
             }
 
         binding.recyclerView.also {
