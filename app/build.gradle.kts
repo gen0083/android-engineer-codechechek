@@ -30,11 +30,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.toVersion(libs.versions.javaVersion.get().toInt())
+        targetCompatibility = JavaVersion.toVersion(libs.versions.javaVersion.get().toInt())
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = libs.versions.javaVersion.get()
     }
     buildFeatures {
         viewBinding = true
@@ -42,7 +42,7 @@ android {
 }
 
 kotlin {
-    jvmToolchain(11)
+    jvmToolchain(libs.versions.javaVersion.get().toInt())
 }
 
 dependencies {
