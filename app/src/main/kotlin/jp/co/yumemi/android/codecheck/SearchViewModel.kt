@@ -3,7 +3,7 @@
  */
 package jp.co.yumemi.android.codecheck
 
-import android.content.Context
+import android.content.res.Resources
 import android.os.Parcelable
 import androidx.lifecycle.ViewModel
 import io.ktor.client.HttpClient
@@ -23,7 +23,7 @@ import org.json.JSONObject
 import java.util.Date
 
 class SearchViewModel(
-    val context: Context,
+    private val resources: Resources,
 ) : ViewModel() {
 
     // 検索結果
@@ -56,7 +56,7 @@ class SearchViewModel(
                     Item(
                         name = name,
                         ownerIconUrl = ownerIconUrl,
-                        language = context.getString(R.string.written_language, language),
+                        language = resources.getString(R.string.written_language, language),
                         stargazersCount = stargazersCount,
                         watchersCount = watchersCount,
                         forksCount = forksCount,
