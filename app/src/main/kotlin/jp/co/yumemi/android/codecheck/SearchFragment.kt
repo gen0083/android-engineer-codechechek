@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import jp.co.yumemi.android.codecheck.databinding.FragmentSearchBinding
+import kotlinx.coroutines.launch
 
 class SearchFragment : Fragment(R.layout.fragment_search) {
 
@@ -43,8 +45,9 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
                     if (inputText.isBlank()) {
                         editText.error = "文字を入力してください"
                     } else {
-                        viewModel.searchResults(inputText).apply {
-                            adapter.submitList(this)
+                        lifecycleScope.launch {
+                            val result = viewModel.searchResults(inputText).await()
+                            adapter.submitList(result)
                         }
                     }
                 }
