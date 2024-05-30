@@ -1,6 +1,6 @@
 [versions]
 androidGradlePlugin = "8.0.2"
-kotlin = "1.6.21"
+kotlin = "1.9.24"
 javaVersion = "17"
 
 coroutine = "1.6.1"
