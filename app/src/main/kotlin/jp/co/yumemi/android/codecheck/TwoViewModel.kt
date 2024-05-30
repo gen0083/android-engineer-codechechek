@@ -23,7 +23,7 @@ import org.json.JSONArray
 import org.json.JSONObject
 import java.util.Date
 
-class SearchViewModel(
+class TwoViewModel(
     val context: Context,
 ) : ViewModel() {
 
