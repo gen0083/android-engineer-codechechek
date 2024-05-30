@@ -9,7 +9,7 @@
 
     <fragment
             android:id="@+id/oneFragment"
-            android:name="jp.co.yumemi.android.codecheck.SearchFragment"
+            android:name="jp.co.yumemi.android.codecheck.OneFragment"
             android:label="@string/app_name"
             tools:layout="@layout/fragment_one"
             >
