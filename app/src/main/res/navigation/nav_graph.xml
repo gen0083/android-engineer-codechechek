@@ -9,7 +9,7 @@
 
     <fragment
             android:id="@+id/oneFragment"
-            android:name="jp.co.yumemi.android.codecheck.OneFragment"
+            android:name="jp.co.yumemi.android.codecheck.SearchFragment"
             android:label="@string/app_name"
             tools:layout="@layout/fragment_one"
             >
@@ -21,7 +21,7 @@
 
     <fragment
             android:id="@+id/twoFragment"
-            android:name="jp.co.yumemi.android.codecheck.TwoFragment"
+            android:name="jp.co.yumemi.android.codecheck.RepositoryDetailFragment"
             android:label="@string/app_name"
             tools:layout="@layout/fragment_two"
             >
