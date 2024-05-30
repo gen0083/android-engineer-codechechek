@@ -16,14 +16,14 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import jp.co.yumemi.android.codecheck.databinding.FragmentOneBinding
+import jp.co.yumemi.android.codecheck.databinding.FragmentSearchBinding
 
-class SearchFragment : Fragment(R.layout.fragment_one) {
+class SearchFragment : Fragment(R.layout.fragment_search) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val binding = FragmentOneBinding.bind(view)
+        val binding = FragmentSearchBinding.bind(view)
 
         val viewModel = SearchViewModel(requireContext())
 
