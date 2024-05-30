@@ -39,12 +39,9 @@ class SearchFragment : Fragment(R.layout.fragment_one) {
 
         binding.searchInputText
             .setOnEditorActionListener { editText, action, _ ->
-                if (action == EditorInfo.IME_ACTION_SEARCH || action == EditorInfo.IME_ACTION_DONE) {
-                    val inputText = editText.text.toString()
-                    if (inputText.isEmpty()) {
-                        editText.error = "文字を入力してください"
-                    } else {
-                        viewModel.searchResults(inputText).apply {
+                if (action == EditorInfo.IME_ACTION_SEARCH) {
+                    editText.text.toString().let {
+                        viewModel.searchResults(it).apply {
                             adapter.submitList(this)
                         }
                     }
