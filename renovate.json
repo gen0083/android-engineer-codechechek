@@ -6,7 +6,6 @@
   "timezone": "Asia/Tokyo",
   "prHourlyLimit": 1,
   "automerge": false,
-  "rangeStrategy": "bump",
   "labels": [
     "dependencies"
   ],
@@ -14,8 +13,12 @@
     {
       "matchUpdateTypes": [
         "patch",
-        "minor"
-      ]
+        "minor",
+        "pin",
+        "digest"
+      ],
+      "groupName": "minor version up",
+      "automerge": true
     },
     {
       "excludePackageNames": [
