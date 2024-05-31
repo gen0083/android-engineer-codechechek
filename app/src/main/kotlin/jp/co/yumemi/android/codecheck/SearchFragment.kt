@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -25,7 +26,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
         val binding = FragmentSearchBinding.bind(view)
 
-        val viewModel = SearchViewModel(requireContext())
+        val viewModel = SearchViewModel(requireContext().resources)
 
         val layoutManager = LinearLayoutManager(requireContext())
         val dividerItemDecoration =
@@ -39,14 +40,17 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         binding.searchInputText
             .setOnEditorActionListener { editText, action, _ ->
                 if (action == EditorInfo.IME_ACTION_SEARCH) {
-                    editText.text.toString().let {
-                        viewModel.searchResults(it).apply {
-                            adapter.submitList(this)
+                    val inputText = editText.text.toString()
+                    if (inputText.isBlank()) {
+                        editText.error = "文字を入力してください"
+                    } else {
+                        lifecycleScope.launch {
+                            val result = viewModel.searchResults(inputText).await()
+                            adapter.submitList(result)
                         }
                     }
-                    return@setOnEditorActionListener true
                 }
-                return@setOnEditorActionListener false
+                return@setOnEditorActionListener true
             }
 
         binding.recyclerView.also {
