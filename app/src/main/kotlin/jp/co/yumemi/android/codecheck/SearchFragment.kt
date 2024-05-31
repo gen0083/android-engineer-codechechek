@@ -26,6 +26,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         super.onViewCreated(view, savedInstanceState)
 
         val binding = FragmentSearchBinding.bind(view)
+        val  kk = ""
 
         val viewModel = SearchViewModel(requireContext().resources)
 
