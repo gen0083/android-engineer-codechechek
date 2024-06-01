@@ -15,15 +15,15 @@ import jp.co.yumemi.android.codecheck.adapter.CustomAdapter
 import jp.co.yumemi.android.codecheck.adapter.OnItemClickListener
 import jp.co.yumemi.android.codecheck.databinding.FragmentSearchBinding
 import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchFragment : Fragment(R.layout.fragment_search) {
+    private val viewModel by viewModel<SearchViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val binding = FragmentSearchBinding.bind(view)
-
-        val viewModel = SearchViewModel()
 
         val layoutManager = LinearLayoutManager(requireContext())
         val dividerItemDecoration =

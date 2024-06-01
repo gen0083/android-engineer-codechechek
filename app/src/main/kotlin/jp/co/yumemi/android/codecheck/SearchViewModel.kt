@@ -16,8 +16,10 @@ import jp.co.yumemi.android.codecheck.TopActivity.Companion.lastSearchDate
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.async
 import kotlinx.serialization.json.Json
+import org.koin.android.annotation.KoinViewModel
 import java.util.Date
 
+@KoinViewModel
 class SearchViewModel : ViewModel() {
     private val json = Json {
         ignoreUnknownKeys = true
