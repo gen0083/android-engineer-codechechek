@@ -1,6 +1,7 @@
 [versions]
 androidGradlePlugin = "8.4.1"
 kotlin = "2.0.0"
+ksp = "2.0.0-1.0.21"
 javaVersion = "17"
 
 coroutine = "1.6.1"
@@ -36,3 +37,4 @@ kotlinxSerializationJson = { module = "org.jetbrains.kotlinx:kotlinx-serializati
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 androidApplication = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }

@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.kotlinSerialization)
+    alias(libs.plugins.ksp)
     id("kotlin-kapt")
     id("kotlin-parcelize")
     id("androidx.navigation.safeargs.kotlin")
