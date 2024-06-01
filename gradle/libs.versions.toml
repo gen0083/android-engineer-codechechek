@@ -29,6 +29,7 @@ androidxNavigationFragmentKtx = { module = "androidx.navigation:navigation-fragm
 androidxNavigationSafeArgs = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "navigation" }
 androidxNavigationUiKtx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation" }
 androidxRecyclerview = { module = "androidx.recyclerview:recyclerview", version = "1.2.1" }
+kotestAssertion = { module = "io.kotest:kotest-assertions-core", version = "5.9.0" }
 
 [plugins]
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
