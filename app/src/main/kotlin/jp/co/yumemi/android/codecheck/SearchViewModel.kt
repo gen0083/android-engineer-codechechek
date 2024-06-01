@@ -4,7 +4,6 @@
 package jp.co.yumemi.android.codecheck
 
 import android.content.res.Resources
-import android.os.Parcelable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import io.ktor.client.HttpClient
@@ -17,7 +16,6 @@ import io.ktor.client.statement.HttpResponse
 import jp.co.yumemi.android.codecheck.TopActivity.Companion.lastSearchDate
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.async
-import kotlinx.parcelize.Parcelize
 import org.json.JSONArray
 import org.json.JSONObject
 import java.util.Date
@@ -27,7 +25,8 @@ class SearchViewModel(
 ) : ViewModel() {
 
     // 検索結果
-    suspend fun searchResults(inputText: String): Deferred<List<Item>> = viewModelScope.async {
+    suspend fun searchResults(inputText: String): Deferred<List<RepositoryInfo>> =
+        viewModelScope.async {
         val client = HttpClient(Android)
 
         val response: HttpResponse = client.get("https://api.github.com/search/repositories") {
@@ -39,7 +38,7 @@ class SearchViewModel(
 
         val jsonItems = jsonBody.optJSONArray("items") ?: JSONArray()
 
-        val items = mutableListOf<Item>()
+            val repositoryInfos = mutableListOf<RepositoryInfo>()
 
         for (i in 0 until jsonItems.length()) {
             val jsonItem = jsonItems.optJSONObject(i) ?: continue
@@ -51,8 +50,8 @@ class SearchViewModel(
             val forksCount = jsonItem.optLong("forks_count")
             val openIssuesCount = jsonItem.optLong("open_issues_count")
 
-            items.add(
-                Item(
+            repositoryInfos.add(
+                RepositoryInfo(
                     name = name,
                     ownerIconUrl = ownerIconUrl,
                     language = resources.getString(R.string.written_language, language),
@@ -66,17 +65,6 @@ class SearchViewModel(
 
         lastSearchDate = Date()
 
-        return@async items.toList()
+            return@async repositoryInfos.toList()
     }
 }
-
-@Parcelize
-data class Item(
-    val name: String,
-    val ownerIconUrl: String,
-    val language: String,
-    val stargazersCount: Long,
-    val watchersCount: Long,
-    val forksCount: Long,
-    val openIssuesCount: Long,
-) : Parcelable

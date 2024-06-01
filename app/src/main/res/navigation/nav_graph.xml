@@ -27,7 +27,7 @@
             >
         <argument
                 android:name="item"
-                app:argType="jp.co.yumemi.android.codecheck.Item"
+                app:argType="jp.co.yumemi.android.codecheck.RepositoryInfo"
                 />
     </fragment>
 
