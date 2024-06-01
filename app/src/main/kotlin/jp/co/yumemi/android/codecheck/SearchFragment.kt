@@ -11,6 +11,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import jp.co.yumemi.android.codecheck.adapter.CustomAdapter
+import jp.co.yumemi.android.codecheck.adapter.OnItemClickListener
 import jp.co.yumemi.android.codecheck.databinding.FragmentSearchBinding
 import kotlinx.coroutines.launch
 
