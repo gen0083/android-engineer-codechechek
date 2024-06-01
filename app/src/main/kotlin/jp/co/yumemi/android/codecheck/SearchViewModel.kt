@@ -4,7 +4,6 @@
 package jp.co.yumemi.android.codecheck
 
 import android.content.res.Resources
-import android.os.Parcelable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import io.ktor.client.HttpClient
@@ -17,7 +16,6 @@ import io.ktor.client.statement.HttpResponse
 import jp.co.yumemi.android.codecheck.TopActivity.Companion.lastSearchDate
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.async
-import kotlinx.parcelize.Parcelize
 import org.json.JSONArray
 import org.json.JSONObject
 import java.util.Date
@@ -69,14 +67,3 @@ class SearchViewModel(
         return@async items.toList()
     }
 }
-
-@Parcelize
-data class Item(
-    val name: String,
-    val ownerIconUrl: String,
-    val language: String,
-    val stargazersCount: Long,
-    val watchersCount: Long,
-    val forksCount: Long,
-    val openIssuesCount: Long,
-) : Parcelable
