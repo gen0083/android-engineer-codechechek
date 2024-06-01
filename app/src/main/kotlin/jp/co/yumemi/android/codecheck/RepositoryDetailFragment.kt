@@ -27,7 +27,7 @@ class RepositoryDetailFragment : Fragment(R.layout.fragment_detail) {
 
         val item = args.item
 
-        binding.ownerIconView.load(item.ownerIconUrl)
+        binding.ownerIconView.load(item.owner.ownerIconUrl)
         binding.nameView.text = item.name
         binding.languageView.text = item.language
         binding.starsView.text = "${item.stargazersCount} stars"

@@ -53,7 +53,7 @@ class SearchViewModel(
             repositoryInfos.add(
                 RepositoryInfo(
                     name = name,
-                    ownerIconUrl = ownerIconUrl,
+                    owner = RepositoryOwner(ownerIconUrl = ownerIconUrl),
                     language = resources.getString(R.string.written_language, language),
                     stargazersCount = stargazersCount,
                     watchersCount = watchersCount,
