@@ -10,7 +10,7 @@ plugins {
 
 android {
     namespace = "jp.co.yumemi.android.codecheck"
-    compileSdk = 31
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "jp.co.yumemi.android.codecheck"
