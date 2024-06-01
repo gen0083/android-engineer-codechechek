@@ -67,6 +67,13 @@ dependencies {
 
     implementation(libs.coil)
 
+    implementation(libs.koinCore)
+    implementation(libs.koinAndroid)
+    implementation(libs.koinKtor)
+    implementation(libs.koinLoggerSlf4j)
+    implementation(libs.koinAnnotation)
+    ksp(libs.koinKspCompiler)
+
     testImplementation(libs.junit)
     testImplementation(libs.kotestAssertion)
     androidTestImplementation(libs.androidxTextJunit)
