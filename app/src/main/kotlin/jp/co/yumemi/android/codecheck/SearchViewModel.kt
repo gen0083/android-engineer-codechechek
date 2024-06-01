@@ -25,7 +25,8 @@ class SearchViewModel(
 ) : ViewModel() {
 
     // 検索結果
-    suspend fun searchResults(inputText: String): Deferred<List<Item>> = viewModelScope.async {
+    suspend fun searchResults(inputText: String): Deferred<List<RepositoryInfo>> =
+        viewModelScope.async {
         val client = HttpClient(Android)
 
         val response: HttpResponse = client.get("https://api.github.com/search/repositories") {
@@ -37,7 +38,7 @@ class SearchViewModel(
 
         val jsonItems = jsonBody.optJSONArray("items") ?: JSONArray()
 
-        val items = mutableListOf<Item>()
+            val repositoryInfos = mutableListOf<RepositoryInfo>()
 
         for (i in 0 until jsonItems.length()) {
             val jsonItem = jsonItems.optJSONObject(i) ?: continue
@@ -49,8 +50,8 @@ class SearchViewModel(
             val forksCount = jsonItem.optLong("forks_count")
             val openIssuesCount = jsonItem.optLong("open_issues_count")
 
-            items.add(
-                Item(
+            repositoryInfos.add(
+                RepositoryInfo(
                     name = name,
                     ownerIconUrl = ownerIconUrl,
                     language = resources.getString(R.string.written_language, language),
@@ -64,6 +65,6 @@ class SearchViewModel(
 
         lastSearchDate = Date()
 
-        return@async items.toList()
+            return@async repositoryInfos.toList()
     }
 }

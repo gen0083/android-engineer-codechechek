@@ -10,26 +10,33 @@ import androidx.recyclerview.widget.RecyclerView
 
 class CustomAdapter(
     private val itemClickListener: OnItemClickListener,
-) : ListAdapter<Item, CustomAdapter.ViewHolder>(object : DiffUtil.ItemCallback<Item>() {
-    override fun areItemsTheSame(oldItem: Item, newItem: Item): Boolean {
-        return oldItem.name == newItem.name
+) : ListAdapter<RepositoryInfo, CustomAdapter.ViewHolder>(object :
+    DiffUtil.ItemCallback<RepositoryInfo>() {
+    override fun areItemsTheSame(
+        oldRepositoryInfo: RepositoryInfo,
+        newRepositoryInfo: RepositoryInfo,
+    ): Boolean {
+        return oldRepositoryInfo.name == newRepositoryInfo.name
     }
 
-    override fun areContentsTheSame(oldItem: Item, newItem: Item): Boolean {
-        return oldItem == newItem
+    override fun areContentsTheSame(
+        oldRepositoryInfo: RepositoryInfo,
+        newRepositoryInfo: RepositoryInfo,
+    ): Boolean {
+        return oldRepositoryInfo == newRepositoryInfo
     }
 }) {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val nameText = view.findViewById<TextView>(R.id.repositoryNameView)
 
-        fun bind(item: Item) {
-            nameText.text = item.name
+        fun bind(repositoryInfo: RepositoryInfo) {
+            nameText.text = repositoryInfo.name
         }
     }
 
     interface OnItemClickListener {
-        fun itemClick(item: Item)
+        fun itemClick(item: RepositoryInfo)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
