@@ -3,7 +3,6 @@
  */
 package jp.co.yumemi.android.codecheck
 
-import android.content.res.Resources
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import io.ktor.client.HttpClient
@@ -19,9 +18,7 @@ import kotlinx.coroutines.async
 import kotlinx.serialization.json.Json
 import java.util.Date
 
-class SearchViewModel(
-    private val resources: Resources,
-) : ViewModel() {
+class SearchViewModel : ViewModel() {
     private val json = Json {
         ignoreUnknownKeys = true
     }
