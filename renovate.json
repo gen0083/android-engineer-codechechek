@@ -4,7 +4,10 @@
     "config:recommended"
   ],
   "timezone": "Asia/Tokyo",
-  "prHourlyLimit": 1,
+  "prHourlyLimit": 0,
+  "schedule": [
+    "every weekend"
+  ],
   "automerge": false,
   "labels": [
     "dependencies"
@@ -13,16 +16,16 @@
     {
       "matchUpdateTypes": [
         "patch",
-        "minor",
         "pin",
         "digest"
       ],
-      "groupName": "minor version up",
+      "groupName": "patch version up",
       "automerge": true
     },
     {
       "excludePackageNames": [
-        "kotlin"
+        "kotlin",
+        "gradle"
       ]
     }
   ]
