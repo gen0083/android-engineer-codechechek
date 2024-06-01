@@ -12,7 +12,7 @@ data class RepositoryInfo(
     val name: String,
     val owner: RepositoryOwner,
     @SerialName("language")
-    val language: String,
+    val language: String? = "unknown",
     @SerialName("stargazers_count")
     val stargazersCount: Long,
     @SerialName("watchers_count")
