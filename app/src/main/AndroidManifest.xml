@@ -12,6 +12,7 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.AndroidEngineerCodeCheck"
+            android:name=".CodeCheckApp"
             >
         <activity
                 android:name="jp.co.yumemi.android.codecheck.TopActivity"
