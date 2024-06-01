@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidApplication) apply false
     alias(libs.plugins.kotlinAndroid) apply false
+    alias(libs.plugins.kotlinSerialization) apply false
     id("androidx.navigation.safeargs") version "2.5.3" apply false
 }
 

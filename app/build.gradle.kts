@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
+    alias(libs.plugins.kotlinSerialization)
     id("kotlin-kapt")
     id("kotlin-parcelize")
     id("androidx.navigation.safeargs.kotlin")
@@ -61,10 +62,13 @@ dependencies {
 
     implementation(libs.kotlinxCoroutineAndroid)
     implementation(libs.ktorClientAndroid)
+    implementation(libs.kotlinxSerializationJson)
 
     implementation(libs.coil)
 
     testImplementation(libs.junit)
+    testImplementation(libs.kotestAssertion)
     androidTestImplementation(libs.androidxTextJunit)
     androidTestImplementation(libs.androidxTestEspressoCore)
+    androidTestImplementation(libs.kotestAssertion)
 }

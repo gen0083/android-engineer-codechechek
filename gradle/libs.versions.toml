@@ -29,7 +29,10 @@ androidxNavigationFragmentKtx = { module = "androidx.navigation:navigation-fragm
 androidxNavigationSafeArgs = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "navigation" }
 androidxNavigationUiKtx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation" }
 androidxRecyclerview = { module = "androidx.recyclerview:recyclerview", version = "1.2.1" }
+kotestAssertion = { module = "io.kotest:kotest-assertions-core", version = "5.9.0" }
+kotlinxSerializationJson = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version = "1.7.0-RC" }
 
 [plugins]
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 androidApplication = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
