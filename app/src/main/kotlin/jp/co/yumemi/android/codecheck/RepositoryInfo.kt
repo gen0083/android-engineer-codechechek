@@ -29,3 +29,10 @@ data class RepositoryOwner(
     @SerialName("avatar_url")
     val ownerIconUrl: String,
 ) : Parcelable
+
+@Serializable
+data class RepositorySearchResponse(
+    @SerialName("total_count")
+    val count: Int,
+    val items: List<RepositoryInfo>,
+)

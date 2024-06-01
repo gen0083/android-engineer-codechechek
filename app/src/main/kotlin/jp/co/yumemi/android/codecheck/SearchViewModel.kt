@@ -17,9 +17,6 @@ import jp.co.yumemi.android.codecheck.TopActivity.Companion.lastSearchDate
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.async
 import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.decodeFromJsonElement
-import kotlinx.serialization.json.jsonArray
-import kotlinx.serialization.json.jsonObject
 import java.util.Date
 
 class SearchViewModel(
@@ -39,16 +36,9 @@ class SearchViewModel(
                 parameter("q", inputText)
             }
 
-            val jsonBody = json.parseToJsonElement(response.receive<String>())
-            val list = jsonBody.jsonObject["items"]?.jsonArray?.let {
-                buildList {
-                    for (item in it) {
-                        add(json.decodeFromJsonElement<RepositoryInfo>(item))
-                    }
-                }
-            } ?: listOf()
+            val jsonResponse = json.decodeFromString<RepositorySearchResponse>(response.receive())
             lastSearchDate = Date()
 
-            return@async list
+            return@async jsonResponse.items
         }
 }
