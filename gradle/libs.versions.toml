@@ -5,7 +5,7 @@ ksp = "2.0.0-1.0.21"
 javaVersion = "17"
 
 coroutine = "1.6.1"
-ktor = "1.6.4"
+ktor = "2.3.11"
 lifecycle = "2.5.1"
 navigation = "2.5.3"
 koin = "3.6.0-Beta4"

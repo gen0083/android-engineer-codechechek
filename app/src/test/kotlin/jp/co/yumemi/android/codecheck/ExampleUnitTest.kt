@@ -2,12 +2,13 @@ package jp.co.yumemi.android.codecheck
 
 import io.kotest.matchers.shouldBe
 import io.ktor.client.HttpClient
-import io.ktor.client.call.receive
+import io.ktor.client.call.body
 import io.ktor.client.engine.android.Android
 import io.ktor.client.request.get
 import io.ktor.client.request.header
 import io.ktor.client.request.parameter
 import io.ktor.client.statement.HttpResponse
+import io.ktor.client.statement.bodyAsText
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.json.Json
 import org.junit.Test
@@ -29,7 +30,7 @@ class ExampleUnitTest {
             parameter("q", "asdfghjkk")
         }
 
-        val jsonBody = json.decodeFromString<RepositorySearchResponse>(response.receive())
+        val jsonBody = json.decodeFromString<RepositorySearchResponse>(response.body())
         jsonBody.items.size shouldBe 11
     }
 
@@ -40,7 +41,7 @@ class ExampleUnitTest {
             parameter("q", "asdfghjkkkjlkjlkjiouore")
         }
 
-        val str = response.receive<String>()
+        val str = response.bodyAsText()
         println(str)
         val jsonBody = json.decodeFromString<RepositorySearchResponse>(str)
         jsonBody.items.size shouldBe 0
