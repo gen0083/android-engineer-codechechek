@@ -50,10 +50,6 @@ kotlin {
     jvmToolchain(libs.versions.javaVersion.get().toInt())
 }
 
-ksp {
-    arg("KOIN_CONFIG_CHECK", "true")
-}
-
 dependencies {
     implementation(libs.androidxCoreKtx)
     implementation(libs.androidxAppcompat)
