@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.kotlinSerialization)
+    alias(libs.plugins.ksp)
     id("kotlin-kapt")
     id("kotlin-parcelize")
     id("androidx.navigation.safeargs.kotlin")
@@ -9,7 +10,7 @@ plugins {
 
 android {
     namespace = "jp.co.yumemi.android.codecheck"
-    compileSdk = 31
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "jp.co.yumemi.android.codecheck"
@@ -18,7 +19,9 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "jp.co.yumemi.android.codecheck.InstrumentationTestRunner"
+
+
     }
 
     buildTypes {
@@ -39,6 +42,9 @@ android {
     }
     buildFeatures {
         viewBinding = true
+    }
+    sourceSets.configureEach {
+        kotlin.srcDir("${layout.buildDirectory}/generated/ksp/$name/kotlin/")
     }
 }
 
@@ -66,9 +72,19 @@ dependencies {
 
     implementation(libs.coil)
 
+    implementation(libs.koinCore)
+    implementation(libs.koinAndroid)
+    implementation(libs.koinKtor)
+    implementation(libs.koinLoggerSlf4j)
+    implementation(libs.koinAnnotation)
+    ksp(libs.koinKspCompiler)
+
     testImplementation(libs.junit)
     testImplementation(libs.kotestAssertion)
+    testImplementation(libs.koinTest)
     androidTestImplementation(libs.androidxTextJunit)
     androidTestImplementation(libs.androidxTestEspressoCore)
     androidTestImplementation(libs.kotestAssertion)
+    androidTestImplementation(libs.koinTest)
+    androidTestImplementation(libs.koinAndroidTest)
 }
