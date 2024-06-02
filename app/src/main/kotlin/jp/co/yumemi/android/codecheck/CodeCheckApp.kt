@@ -2,6 +2,7 @@ package jp.co.yumemi.android.codecheck
 
 import android.app.Application
 import jp.co.yumemi.android.codecheck.di.ScanModule
+import jp.co.yumemi.android.codecheck.di.networkModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -15,7 +16,8 @@ class CodeCheckApp : Application() {
             androidLogger()
             androidContext(this@CodeCheckApp)
             modules(
-                ScanModule().module
+                ScanModule().module,
+                networkModule,
             )
         }
     }
