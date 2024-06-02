@@ -19,7 +19,9 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "jp.co.yumemi.android.codecheck.InstrumentationTestRunner"
+
+
     }
 
     buildTypes {
@@ -83,5 +85,6 @@ dependencies {
     androidTestImplementation(libs.androidxTextJunit)
     androidTestImplementation(libs.androidxTestEspressoCore)
     androidTestImplementation(libs.kotestAssertion)
+    androidTestImplementation(libs.koinTest)
     androidTestImplementation(libs.koinAndroidTest)
 }
