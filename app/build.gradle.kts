@@ -41,6 +41,9 @@ android {
     buildFeatures {
         viewBinding = true
     }
+    sourceSets.configureEach {
+        kotlin.srcDir("${layout.buildDirectory}/generated/ksp/$name/kotlin/")
+    }
 }
 
 kotlin {
