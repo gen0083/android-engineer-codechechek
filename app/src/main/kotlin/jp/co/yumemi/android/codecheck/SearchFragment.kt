@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import jp.co.yumemi.android.codecheck.adapter.CustomAdapter
 import jp.co.yumemi.android.codecheck.adapter.OnItemClickListener
+import jp.co.yumemi.android.codecheck.api.RepositoryInfo
 import jp.co.yumemi.android.codecheck.databinding.FragmentSearchBinding
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch

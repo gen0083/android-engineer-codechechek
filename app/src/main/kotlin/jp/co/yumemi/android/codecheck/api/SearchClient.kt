@@ -1,4 +1,4 @@
-package jp.co.yumemi.android.codecheck
+package jp.co.yumemi.android.codecheck.api
 
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body

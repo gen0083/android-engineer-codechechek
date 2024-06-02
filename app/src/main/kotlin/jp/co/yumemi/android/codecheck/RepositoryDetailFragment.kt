@@ -8,6 +8,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import coil.load
+import jp.co.yumemi.android.codecheck.api.SearchClient
 import jp.co.yumemi.android.codecheck.databinding.FragmentDetailBinding
 import org.koin.android.ext.android.inject
 
