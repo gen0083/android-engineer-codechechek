@@ -1,12 +1,27 @@
 package jp.co.yumemi.android.codecheck
 
 import io.kotest.matchers.shouldBe
+import jp.co.yumemi.android.codecheck.di.networkModule
 import kotlinx.serialization.json.Json
+import org.junit.After
+import org.junit.Before
 import org.junit.Test
+import org.koin.core.context.startKoin
+import org.koin.core.context.stopKoin
+import org.koin.test.KoinTest
+import org.koin.test.inject
 
-class RepositoryInfoTest {
-    private val json = Json {
-        ignoreUnknownKeys = true
+class RepositoryInfoTest : KoinTest {
+    private val json by inject<Json>()
+
+    @Before
+    fun setup() {
+        startKoin { modules(networkModule) }
+    }
+
+    @After
+    fun tearDown() {
+        stopKoin()
     }
 
     @Test
