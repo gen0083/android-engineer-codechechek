@@ -35,6 +35,7 @@ androidxRecyclerview = { module = "androidx.recyclerview:recyclerview", version 
 kotestAssertion = { module = "io.kotest:kotest-assertions-core", version = "5.9.0" }
 kotlinxSerializationJson = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version = "1.7.0-RC" }
 koinCore = { module = "io.insert-koin:koin-core", version.ref = "koin" }
+koinTest = { module = "io.insert-koin:koin-test", version.ref = "koin" }
 koinAndroid = { module = "io.insert-koin:koin-android", version.ref = "koin" }
 koinAndroidTest = { module = "io.insert-koin:koin-android-test", version.ref = "koin" }
 koinCompose = { module = "io.insert-koin:koin-compose", version.ref = "koin" }

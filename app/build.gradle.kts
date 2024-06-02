@@ -79,7 +79,9 @@ dependencies {
 
     testImplementation(libs.junit)
     testImplementation(libs.kotestAssertion)
+    testImplementation(libs.koinTest)
     androidTestImplementation(libs.androidxTextJunit)
     androidTestImplementation(libs.androidxTestEspressoCore)
     androidTestImplementation(libs.kotestAssertion)
+    androidTestImplementation(libs.koinAndroidTest)
 }
