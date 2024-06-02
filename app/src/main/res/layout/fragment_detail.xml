@@ -109,4 +109,15 @@
             tools:text="131 open issues"
             />
 
+    <TextView
+            android:id="@+id/search_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="検索日：1月1日"
+            />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
