@@ -12,9 +12,8 @@ import io.ktor.client.request.header
 import io.ktor.client.request.parameter
 import io.ktor.client.statement.HttpResponse
 import jp.co.yumemi.android.codecheck.TopActivity.Companion.lastSearchDate
-import kotlinx.coroutines.Deferred
-import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
 import org.koin.android.annotation.KoinViewModel
 import java.util.Date
@@ -28,8 +27,8 @@ class SearchViewModel(
         field = kotlinx.coroutines.flow.MutableStateFlow<List<RepositoryInfo>>(kotlin.collections.listOf())
 
     // 検索結果
-    suspend fun searchResults(inputText: String): Deferred<List<RepositoryInfo>> =
-        viewModelScope.async {
+    fun searchResults(inputText: String) {
+        viewModelScope.launch {
             val response: HttpResponse = client.get("https://api.github.com/search/repositories") {
                 header("Accept", "application/vnd.github.v3+json")
                 parameter("q", inputText)
@@ -38,6 +37,7 @@ class SearchViewModel(
             val jsonResponse = json.decodeFromString<RepositorySearchResponse>(response.body())
             lastSearchDate = Date()
 
-            return@async jsonResponse.items
+            list.value = jsonResponse.items
         }
+    }
 }
