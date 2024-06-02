@@ -1,4 +1,4 @@
-package jp.co.yumemi.android.codecheck
+package jp.co.yumemi.android.codecheck.api
 
 import io.kotest.matchers.shouldBe
 import jp.co.yumemi.android.codecheck.di.networkModule

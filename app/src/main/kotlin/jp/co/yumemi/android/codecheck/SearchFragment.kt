@@ -13,7 +13,9 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import jp.co.yumemi.android.codecheck.adapter.CustomAdapter
 import jp.co.yumemi.android.codecheck.adapter.OnItemClickListener
+import jp.co.yumemi.android.codecheck.api.RepositoryInfo
 import jp.co.yumemi.android.codecheck.databinding.FragmentSearchBinding
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -41,10 +43,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
                     if (inputText.isBlank()) {
                         editText.error = "文字を入力してください"
                     } else {
-                        lifecycleScope.launch {
-                            val result = viewModel.searchResults(inputText).await()
-                            adapter.submitList(result)
-                        }
+                        viewModel.searchResults(inputText)
                     }
                 }
                 return@setOnEditorActionListener true
@@ -54,6 +53,13 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
             it.layoutManager = layoutManager
             it.addItemDecoration(dividerItemDecoration)
             it.adapter = adapter
+        }
+
+        lifecycleScope.launch {
+            viewModel.list.collectLatest {
+                // TODO: emptyやらindicatorやら表示
+                adapter.submitList(it)
+            }
         }
     }
 

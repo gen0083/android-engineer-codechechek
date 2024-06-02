@@ -3,7 +3,6 @@ plugins {
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.kotlinSerialization)
     alias(libs.plugins.ksp)
-    id("kotlin-kapt")
     id("kotlin-parcelize")
     id("androidx.navigation.safeargs.kotlin")
 }
@@ -50,6 +49,9 @@ android {
 
 kotlin {
     jvmToolchain(libs.versions.javaVersion.get().toInt())
+    sourceSets.all {
+        languageSettings.enableLanguageFeature("ExplicitBackingFields")
+    }
 }
 
 dependencies {

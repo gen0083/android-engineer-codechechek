@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import jp.co.yumemi.android.codecheck.R
-import jp.co.yumemi.android.codecheck.RepositoryInfo
+import jp.co.yumemi.android.codecheck.api.RepositoryInfo
 
 class CustomAdapter(
     private val itemClickListener: OnItemClickListener,
