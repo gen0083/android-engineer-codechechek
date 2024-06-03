@@ -47,6 +47,17 @@ android {
     sourceSets.configureEach {
         kotlin.srcDir("${layout.buildDirectory}/generated/ksp/$name/kotlin/")
     }
+    testOptions {
+        managedDevices {
+            localDevices {
+                create("pixel4api33") {
+                    device = "Pixel 4"
+                    apiLevel = 33
+                    systemImageSource = "aosp"
+                }
+            }
+        }
+    }
 }
 
 tasks.withType(Test::class.java) {
