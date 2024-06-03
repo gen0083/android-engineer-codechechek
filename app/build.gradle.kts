@@ -1,3 +1,5 @@
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat
+
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
@@ -44,6 +46,12 @@ android {
     }
     sourceSets.configureEach {
         kotlin.srcDir("${layout.buildDirectory}/generated/ksp/$name/kotlin/")
+    }
+}
+
+tasks.withType(Test::class.java) {
+    testLogging {
+        exceptionFormat = TestExceptionFormat.FULL
     }
 }
 
