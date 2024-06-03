@@ -93,7 +93,7 @@ fun SearchScreen(
                             modifier = Modifier.fillMaxWidth()
                                 .clickable { onNavigate(item) }
                         )
-                        if (it < list.size) {
+                        if (it < list.lastIndex) {
                             HorizontalDivider()
                         }
                     }
