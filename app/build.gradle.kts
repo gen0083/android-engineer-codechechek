@@ -44,6 +44,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        compose = true
     }
     sourceSets.configureEach {
         kotlin.srcDir("${layout.buildDirectory}/generated/ksp/$name/kotlin/")
@@ -80,6 +81,15 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidxConstraintlayout)
     implementation(libs.androidxRecyclerview)
+
+    implementation(libs.androidxActivityCompose)
+    implementation(libs.androidxFragmentCompose)
+    implementation(libs.androidxComposeMaterial)
+    implementation(libs.androidxComposeFoundation)
+    implementation(libs.androidxComposeToolingPreview)
+    debugImplementation(libs.androidxComposeTooling)
+    androidTestImplementation(libs.androidxComposeTest)
+    debugImplementation(libs.androidxComposeManifest)
 
     implementation(libs.androidxLifecycleViewmodelKtx)
     implementation(libs.androidxLifecycleLivedataKtx)
