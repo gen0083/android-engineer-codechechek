@@ -107,6 +107,7 @@ dependencies {
     implementation(libs.kotlinxSerializationJson)
 
     implementation(libs.coil)
+    implementation(libs.coilCompose)
 
     implementation(libs.koinCore)
     implementation(libs.koinAndroid)
