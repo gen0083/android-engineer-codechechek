@@ -28,7 +28,7 @@ ktorClientAndroid = { module = "io.ktor:ktor-client-android", version.ref = "kto
 androidxLifecycleLivedataKtx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycle" }
 androidxLifecycleRuntimeKtx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle" }
 androidxLifecycleViewmodelKtx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
-material = { module = "com.google.android.material:material", version = "1.4.0" }
+material = { module = "com.google.android.material:material", version = "1.12.0" }
 androidxNavigationFragmentKtx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigation" }
 androidxNavigationSafeArgs = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "navigation" }
 androidxNavigationUiKtx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation" }
