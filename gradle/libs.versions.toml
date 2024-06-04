@@ -14,7 +14,7 @@ koinAnnotation = "1.3.1"
 
 [libraries]
 androidxAppcompat = { module = "androidx.appcompat:appcompat", version = "1.3.1" }
-coil = { module = "io.coil-kt:coil", version = "1.3.2" }
+coil = { module = "io.coil-kt:coil", version = "2.6.0" }
 coilCompose = { module = "io.coil-kt:coil-compose", version = "2.6.0" }
 androidxConstraintlayout = { module = "androidx.constraintlayout:constraintlayout", version = "2.1.4" }
 androidxCoreKtx = { module = "androidx.core:core-ktx", version = "1.6.0" }
