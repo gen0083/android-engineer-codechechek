@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.kotlinSerialization)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.compose)
     id("kotlin-parcelize")
     id("androidx.navigation.safeargs.kotlin")
 }
@@ -43,6 +44,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        compose = true
     }
     sourceSets.configureEach {
         kotlin.srcDir("${layout.buildDirectory}/generated/ksp/$name/kotlin/")
@@ -57,6 +59,10 @@ android {
                 }
             }
         }
+    }
+    composeCompiler {
+        enableStrongSkippingMode = true
+        reportsDestination = layout.buildDirectory.dir("compose_compiler")
     }
 }
 
@@ -80,6 +86,15 @@ dependencies {
     implementation(libs.androidxConstraintlayout)
     implementation(libs.androidxRecyclerview)
 
+    implementation(libs.androidxActivityCompose)
+    implementation(libs.androidxFragmentCompose)
+    implementation(libs.androidxComposeMaterial)
+    implementation(libs.androidxComposeFoundation)
+    implementation(libs.androidxComposeToolingPreview)
+    debugImplementation(libs.androidxComposeTooling)
+    androidTestImplementation(libs.androidxComposeTest)
+    debugImplementation(libs.androidxComposeManifest)
+
     implementation(libs.androidxLifecycleViewmodelKtx)
     implementation(libs.androidxLifecycleLivedataKtx)
     implementation(libs.androidxLifecycleRuntimeKtx)
@@ -92,6 +107,7 @@ dependencies {
     implementation(libs.kotlinxSerializationJson)
 
     implementation(libs.coil)
+    implementation(libs.coilCompose)
 
     implementation(libs.koinCore)
     implementation(libs.koinAndroid)

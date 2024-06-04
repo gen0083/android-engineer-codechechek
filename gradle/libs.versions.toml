@@ -15,6 +15,7 @@ koinAnnotation = "1.3.1"
 [libraries]
 androidxAppcompat = { module = "androidx.appcompat:appcompat", version = "1.3.1" }
 coil = { module = "io.coil-kt:coil", version = "1.3.2" }
+coilCompose = { module = "io.coil-kt:coil-compose", version = "2.6.0" }
 androidxConstraintlayout = { module = "androidx.constraintlayout:constraintlayout", version = "2.1.4" }
 androidxCoreKtx = { module = "androidx.core:core-ktx", version = "1.6.0" }
 androidxTestEspressoCore = { module = "androidx.test.espresso:espresso-core", version = "3.4.0" }
@@ -45,9 +46,19 @@ koinKtor = { module = "io.insert-koin:koin-ktor", version.ref = "koin" }
 koinLoggerSlf4j = { module = "io.insert-koin:koin-logger-slf4j", version.ref = "koin" }
 koinAnnotation = { module = "io.insert-koin:koin-annotations", version.ref = "koinAnnotation" }
 koinKspCompiler = { module = "io.insert-koin:koin-ksp-compiler", version.ref = "koinAnnotation" }
+# compose
+androidxComposeMaterial = { module = "androidx.compose.material3:material3", version = "1.2.1" }
+androidxComposeFoundation = { module = "androidx.compose.foundation:foundation", version = "1.6.7" }
+androidxComposeToolingPreview = { module = "androidx.compose.ui:ui-tooling-preview", version = "1.6.7" }
+androidxComposeTooling = { module = "androidx.compose.ui:ui-tooling", version = "1.6.7" }
+androidxComposeTest = { module = "androidx.compose.ui:ui-test-junit4", version = "1.6.7" }
+androidxComposeManifest = { module = "androidx.compose.ui:ui-test-manifest", version = "1.6.7" }
+androidxActivityCompose = { module = "androidx.activity:activity-compose", version = "1.9.0" }
+androidxFragmentCompose = { module = "androidx.fragment:fragment-compose", version = "1.7.1" }
 
 [plugins]
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 androidApplication = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
