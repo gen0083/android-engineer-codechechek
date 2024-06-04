@@ -22,8 +22,6 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "jp.co.yumemi.android.codecheck.InstrumentationTestRunner"
-
-
     }
 
     buildTypes {
@@ -35,20 +33,25 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.toVersion(libs.versions.javaVersion.get().toInt())
         targetCompatibility = JavaVersion.toVersion(libs.versions.javaVersion.get().toInt())
     }
+
     kotlinOptions {
         jvmTarget = libs.versions.javaVersion.get()
     }
+
     buildFeatures {
         viewBinding = true
         compose = true
     }
+
     sourceSets.configureEach {
         kotlin.srcDir("${layout.buildDirectory}/generated/ksp/$name/kotlin/")
     }
+
     testOptions {
         managedDevices {
             localDevices {
@@ -60,6 +63,7 @@ android {
             }
         }
     }
+
     composeCompiler {
         enableStrongSkippingMode = true
         reportsDestination = layout.buildDirectory.dir("compose_compiler")
