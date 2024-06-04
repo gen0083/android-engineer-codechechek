@@ -5,5 +5,4 @@ package jp.co.yumemi.android.codecheck
 
 import androidx.appcompat.app.AppCompatActivity
 
-class TopActivity : AppCompatActivity(R.layout.activity_top) {
-}
+class TopActivity : AppCompatActivity(R.layout.activity_top)

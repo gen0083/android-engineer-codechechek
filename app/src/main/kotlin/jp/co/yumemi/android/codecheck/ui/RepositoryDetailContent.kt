@@ -45,7 +45,7 @@ fun RepositoryDetailContent(
                 text = stringResource(
                     R.string.written_language,
                     info.language ?: "unknown",
-                )
+                ),
             )
             Column {
                 Text(text = stringResource(R.string.count_stars, info.stargazersCount))
@@ -71,7 +71,7 @@ private fun RepositoryDetailContentPreview() {
             info = RepositoryInfo(
                 name = "test",
                 owner = RepositoryOwner(
-                    ownerIconUrl = "https://avatars.githubusercontent.com/u/7608725?v=4"
+                    ownerIconUrl = "https://avatars.githubusercontent.com/u/7608725?v=4",
                 ),
                 language = null,
                 stargazersCount = 0,

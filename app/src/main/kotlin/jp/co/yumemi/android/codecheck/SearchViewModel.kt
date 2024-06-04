@@ -18,7 +18,9 @@ class SearchViewModel(
     private val searchClient: SearchClient,
 ) : ViewModel() {
     val list: StateFlow<List<RepositoryInfo>>
-        field = kotlinx.coroutines.flow.MutableStateFlow<List<RepositoryInfo>>(kotlin.collections.listOf())
+        field = kotlinx.coroutines.flow.MutableStateFlow<List<RepositoryInfo>>(
+            kotlin.collections.listOf(),
+        )
     val isLoading: State<Boolean>
         field = androidx.compose.runtime.mutableStateOf(false)
 

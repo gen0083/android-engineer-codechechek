@@ -2,6 +2,7 @@
   <dictionary name="gen0083">
     <words>
       <w>codecheck</w>
+      <w>ktlint</w>
     </words>
   </dictionary>
 </component>
