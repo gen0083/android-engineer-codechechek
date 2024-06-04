@@ -1,12 +1,12 @@
 package jp.co.yumemi.codecheck
 
-import org.junit.Assert.assertTrue
+import io.kotest.matchers.string.shouldContain
 import org.junit.Test
 
 class AndroidGreetingTest {
 
     @Test
     fun testExample() {
-        assertTrue("Check Android is mentioned", Greeting().greet().contains("Android"))
+        Greeting().greet() shouldContain "Android"
     }
 }

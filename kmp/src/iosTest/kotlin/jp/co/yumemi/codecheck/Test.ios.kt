@@ -1,12 +1,12 @@
 package jp.co.yumemi.codecheck
 
+import io.kotest.matchers.string.shouldContain
 import kotlin.test.Test
-import kotlin.test.assertTrue
 
 class IosGreetingTest {
 
     @Test
     fun testExample() {
-        assertTrue(Greeting().greet().contains("iOS"), "Check iOS is mentioned")
+        Greeting().greet() shouldContain "iOS"
     }
 }

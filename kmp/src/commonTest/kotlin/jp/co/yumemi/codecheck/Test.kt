@@ -1,12 +1,12 @@
 package jp.co.yumemi.codecheck
 
+import io.kotest.matchers.string.shouldContain
 import kotlin.test.Test
-import kotlin.test.assertTrue
 
 class CommonGreetingTest {
 
     @Test
     fun testExample() {
-        assertTrue(Greeting().greet().contains("Hello"), "Check 'Hello' is mentioned")
+        Greeting().greet() shouldContain "Hello"
     }
 }

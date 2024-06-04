@@ -29,6 +29,7 @@ kotlin {
         }
         commonTest.dependencies {
             implementation(libs.kotlinTest)
+            implementation(libs.kotestAssertion)
         }
     }
 }
