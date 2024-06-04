@@ -61,7 +61,8 @@ fun SearchScreen(
                 onSearch = { onTextChanged(textState.text.toString()) },
                 onDone = { onTextChanged(textState.text.toString()) },
             ),
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxWidth()
                 .padding(16.dp)
                 .border(
                     border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline),
@@ -90,8 +91,9 @@ fun SearchScreen(
                         Text(
                             text = item.name,
                             fontSize = 12.sp,
-                            modifier = Modifier.fillMaxWidth()
-                                .clickable { onNavigate(item) }
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clickable { onNavigate(item) },
                         )
                         if (it < list.lastIndex) {
                             HorizontalDivider()
