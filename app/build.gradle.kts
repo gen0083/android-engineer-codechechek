@@ -85,10 +85,6 @@ kotlin {
 
 dependencies {
     implementation(libs.androidxCoreKtx)
-    implementation(libs.androidxAppcompat)
-    implementation(libs.material)
-    implementation(libs.androidxConstraintlayout)
-    implementation(libs.androidxRecyclerview)
 
     implementation(libs.androidxActivityCompose)
     implementation(libs.androidxFragmentCompose)
@@ -110,13 +106,11 @@ dependencies {
     implementation(libs.ktorClientAndroid)
     implementation(libs.kotlinxSerializationJson)
 
-    implementation(libs.coil)
     implementation(libs.coilCompose)
 
     implementation(libs.koinCore)
     implementation(libs.koinAndroid)
     implementation(libs.koinKtor)
-    implementation(libs.koinLoggerSlf4j)
     implementation(libs.koinAnnotation)
     ksp(libs.koinKspCompiler)
 
