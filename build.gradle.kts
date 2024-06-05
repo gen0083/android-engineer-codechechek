@@ -8,7 +8,3 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform) apply false
     id("androidx.navigation.safeargs") version "2.5.3" apply false
 }
-
-tasks.register<Delete>("clean") {
-    delete(rootProject.layout.buildDirectory)
-}
