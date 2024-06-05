@@ -47,7 +47,11 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             //put your multiplatform dependencies here
-//            implementation(compose.runtime)
+            implementation(compose.runtime)
+            implementation(compose.ui)
+            implementation(compose.material3)
+            implementation(compose.foundation)
+            implementation(compose.components.resources)
         }
         commonTest.dependencies {
             implementation(libs.kotlinTest)
