@@ -59,7 +59,7 @@ android {
     namespace = "jp.co.yumemi.codecheck"
     compileSdk = 34
     defaultConfig {
-        minSdk = 24
+        minSdk = 23
     }
     compileOptions {
         sourceCompatibility = JavaVersion.toVersion(libs.versions.javaVersion.get())
