@@ -15,5 +15,5 @@ dependencyResolutionManagement {
 rootProject.name = "Android Engineer CodeCheck"
 include(
     ":app",
-    ":kmp",
+    ":kmpShare",
 )
