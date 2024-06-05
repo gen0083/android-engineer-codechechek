@@ -11,4 +11,4 @@ jobs:
           chmod a+x ktlint && 
           sudo mv ktlint /usr/local/bin/
       - run: |
-          ktlint "*/src/**/*.kt" "!*/src/*Test/*" "!*/src/*test/*"
+          ktlint "*/src/**/*.kt" "!*/src/*Test/*" "!*/src/*test/*" "!*/src/test/*"
