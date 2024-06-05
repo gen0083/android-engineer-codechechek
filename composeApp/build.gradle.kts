@@ -71,6 +71,12 @@ kotlin {
     }
 }
 
+compose.resources {
+    publicResClass = true
+    generateResClass = always
+    packageOfResClass = "jp.co.yumemi.codecheck.resources"
+}
+
 android {
     namespace = "jp.co.yumemi.android.codecheck"
     compileSdk = 34
