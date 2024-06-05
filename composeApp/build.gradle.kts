@@ -65,6 +65,10 @@ kotlin {
         wasmJsMain.dependencies {
         }
     }
+
+    composeCompiler {
+        enableStrongSkippingMode = true
+    }
 }
 
 android {
