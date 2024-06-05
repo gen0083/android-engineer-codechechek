@@ -1,3 +1,4 @@
+@file:Suppress("ktlint")
 package jp.co.yumemi.android.codecheck.api
 
 import io.kotest.matchers.shouldBe

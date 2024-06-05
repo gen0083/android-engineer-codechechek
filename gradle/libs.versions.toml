@@ -26,6 +26,7 @@ androidxLifecycleViewmodelKtx = { module = "androidx.lifecycle:lifecycle-viewmod
 androidxNavigationFragmentKtx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigation" }
 androidxNavigationSafeArgs = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "navigation" }
 androidxNavigationUiKtx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation" }
+kotlinTest = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 kotestAssertion = { module = "io.kotest:kotest-assertions-core", version = "5.9.0" }
 kotlinxSerializationJson = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version = "1.7.0-RC" }
 koinCore = { module = "io.insert-koin:koin-core", version.ref = "koin" }
@@ -52,6 +53,8 @@ androidxFragmentCompose = { module = "androidx.fragment:fragment-compose", versi
 [plugins]
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 androidApplication = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+androidLibrary = { id = "com.android.library", version.ref = "androidGradlePlugin" }
 kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
