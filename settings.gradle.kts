@@ -16,4 +16,5 @@ rootProject.name = "Android Engineer CodeCheck"
 include(
     ":app",
     ":kmpShare",
+    ":composeApp",
 )
