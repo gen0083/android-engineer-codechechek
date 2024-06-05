@@ -31,7 +31,6 @@ class SearchClientTest : KoinTest {
         stopKoin()
     }
 
-
     @Test
     fun `response total count = 11`(): Unit = runBlocking {
         val actual = client.searchRepository("asdfghjkk")
