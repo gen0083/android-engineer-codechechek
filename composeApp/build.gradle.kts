@@ -3,7 +3,9 @@ import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
-    alias(libs.plugins.androidLibrary)
+    alias(libs.plugins.androidApplication)
+    alias(libs.plugins.composeMultiplatform)
+    alias(libs.plugins.composeCompiler)
 }
 
 kotlin {
@@ -45,11 +47,14 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             //put your multiplatform dependencies here
+//            implementation(compose.runtime)
         }
         commonTest.dependencies {
             implementation(libs.kotlinTest)
         }
         androidMain.dependencies {
+            implementation(libs.androidxComposeToolingPreview)
+            implementation(libs.androidxActivityCompose)
         }
         wasmJsMain.dependencies {
         }
