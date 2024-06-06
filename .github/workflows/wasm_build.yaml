@@ -18,7 +18,7 @@ jobs:
           distribution: "temurin"
       - name: build
         run: |
-          ./gradlew :composeWasm build
+          ./gradlew :composeWasm:build
       - name: upload
         uses: actions/upload-pages-artifact@v4
         with:
@@ -35,4 +35,4 @@ jobs:
           distribution: "temurin"
       - name: build
         run: |
-          ./gradlew :composeWasm build
+          ./gradlew :composeWasm:build
