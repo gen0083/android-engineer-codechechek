@@ -11,7 +11,7 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "Android Engineer CodeCheck"
+rootProject.name = "Android_Engineer_CodeCheck"
 include(
     ":app",
     ":kmpShare",
