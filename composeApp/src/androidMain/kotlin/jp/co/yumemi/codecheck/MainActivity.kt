@@ -1,11 +1,10 @@
-package jp.co.yumemi.android.codecheck
+package jp.co.yumemi.codecheck
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import jp.co.yumemi.codecheck.App
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
