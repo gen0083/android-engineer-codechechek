@@ -85,6 +85,7 @@ kotlin {
 }
 
 dependencies {
+    implementation(project(":kmpShare"))
     implementation(libs.androidxCoreKtx)
 
     implementation(libs.androidxActivityCompose)
