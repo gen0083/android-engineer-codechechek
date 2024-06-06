@@ -46,18 +46,20 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            //put your multiplatform dependencies here
             implementation(compose.runtime)
             implementation(compose.ui)
             implementation(compose.material3)
             implementation(compose.foundation)
             implementation(compose.components.resources)
+
+            implementation(libs.kotlinxDatetime)
         }
         commonTest.dependencies {
             implementation(libs.kotlinTest)
             implementation(libs.kotestAssertion)
         }
         wasmJsMain.dependencies {
+            implementation(npm("@js-joda/timezone", "2.3.0"))
         }
     }
 }
