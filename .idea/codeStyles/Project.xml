@@ -21,7 +21,7 @@
       </option>
     </AndroidXmlCodeStyleSettings>
     <HTMLCodeStyleSettings>
-      <option name="HTML_SPACE_AFTER_TAG_NAME" value="true" />
+      <option name="HTML_SPACE_INSIDE_EMPTY_TAG" value="true" />
     </HTMLCodeStyleSettings>
     <JetCodeStyleSettings>
       <option name="ALLOW_TRAILING_COMMA" value="true" />
