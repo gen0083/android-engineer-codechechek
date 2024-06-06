@@ -52,7 +52,8 @@ kotlin {
             implementation(compose.foundation)
             implementation(compose.components.resources)
 
-            implementation(libs.kotlinxDatetime)
+            // TODO: appモジュールで参照するため一時的にapiにする
+            api(libs.kotlinxDatetime)
         }
         commonTest.dependencies {
             implementation(libs.kotlinTest)
