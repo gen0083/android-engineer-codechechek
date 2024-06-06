@@ -6,22 +6,6 @@ plugins {
     alias(libs.plugins.composeCompiler)
 }
 
-group = "com.example"
-version = "1.0-SNAPSHOT"
-
-
-val copyWasmResources = tasks.create("copyWasmResourcesWorkaround", Copy::class.java) {
-    from(project(":kmpShare").file("src/commonMain/composeResources"))
-    into("build/processedResources/wasmJs/main")
-}
-
-
-afterEvaluate {
-    project.tasks.getByName("wasmJsProcessResources").finalizedBy(copyWasmResources)
-    project.tasks.getByName("wasmJsDevelopmentExecutableCompileSync").dependsOn(copyWasmResources)
-    project.tasks.getByName("wasmJsProductionExecutableCompileSync").dependsOn(copyWasmResources)
-}
-
 kotlin {
     @OptIn(ExperimentalWasmDsl::class)
     wasmJs {
