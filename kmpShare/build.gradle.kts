@@ -4,6 +4,8 @@ import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
+    alias(libs.plugins.composeMultiplatform)
+    alias(libs.plugins.composeCompiler)
 }
 
 kotlin {
@@ -45,6 +47,11 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             //put your multiplatform dependencies here
+            implementation(compose.runtime)
+            implementation(compose.ui)
+            implementation(compose.material3)
+            implementation(compose.foundation)
+            implementation(compose.components.resources)
         }
         commonTest.dependencies {
             implementation(libs.kotlinTest)
@@ -53,6 +60,12 @@ kotlin {
         wasmJsMain.dependencies {
         }
     }
+}
+
+compose.resources {
+    publicResClass = true
+    generateResClass = always
+    packageOfResClass = "jp.co.yumemi.codecheck.resources"
 }
 
 android {
