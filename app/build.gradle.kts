@@ -7,7 +7,6 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.composeCompiler)
     id("kotlin-parcelize")
-    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -103,9 +102,6 @@ dependencies {
     implementation(libs.androidxLifecycleViewmodelKtx)
     implementation(libs.androidxLifecycleLivedataKtx)
     implementation(libs.androidxLifecycleRuntimeKtx)
-
-    implementation(libs.androidxNavigationFragmentKtx)
-    implementation(libs.androidxNavigationUiKtx)
 
     implementation(libs.kotlinxCoroutineAndroid)
     implementation(libs.ktorClientAndroid)
