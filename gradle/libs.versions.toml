@@ -19,6 +19,8 @@ googleMaterial = { module = "com.google.android.material:material", version = "1
 androidxTestEspressoCore = { module = "androidx.test.espresso:espresso-core", version = "3.4.0" }
 androidxTextJunit = { module = "androidx.test.ext:junit", version = "1.1.5" }
 junit = { module = "junit:junit", version = "4.13.2" }
+kotlinxCoroutineCore = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutine" }
+kotlinxCoroutineCoreJs = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core-js", version.ref = "coroutine" }
 kotlinxCoroutineAndroid = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutine" }
 ktorCore = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
 ktorClientAndroid = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
