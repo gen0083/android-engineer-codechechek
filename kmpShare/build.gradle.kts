@@ -60,7 +60,6 @@ kotlin {
             implementation(libs.kotestAssertion)
         }
         wasmJsMain.dependencies {
-            implementation(npm("@js-joda/timezone", "2.3.0"))
         }
     }
 }
