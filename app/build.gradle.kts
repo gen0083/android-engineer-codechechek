@@ -89,6 +89,7 @@ dependencies {
 
     implementation(project(":kmpShare"))
     implementation(libs.androidxCoreKtx)
+    implementation(libs.googleMaterial)
 
     implementation(libs.androidxActivityCompose)
     implementation(libs.androidxFragmentCompose)
