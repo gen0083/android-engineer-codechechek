@@ -20,6 +20,7 @@ androidxTestEspressoCore = { module = "androidx.test.espresso:espresso-core", ve
 androidxTextJunit = { module = "androidx.test.ext:junit", version = "1.1.5" }
 junit = { module = "junit:junit", version = "4.13.2" }
 kotlinxCoroutineAndroid = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutine" }
+ktorCore = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
 ktorClientAndroid = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
 androidxLifecycleLivedataKtx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycle" }
 androidxLifecycleRuntimeKtx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle" }

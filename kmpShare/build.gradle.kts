@@ -54,10 +54,14 @@ kotlin {
 
             // TODO: appモジュールで参照するため一時的にapiにする
             api(libs.kotlinxDatetime)
+            implementation(libs.ktorCore)
         }
         commonTest.dependencies {
             implementation(libs.kotlinTest)
             implementation(libs.kotestAssertion)
+        }
+        androidMain.dependencies {
+            implementation(libs.koinAndroid)
         }
         wasmJsMain.dependencies {
         }
