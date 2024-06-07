@@ -3,6 +3,18 @@
  */
 package jp.co.yumemi.android.codecheck
 
-import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import cafe.adriel.voyager.navigator.Navigator
+import jp.co.yumemi.android.codecheck.ui.search.SearchScreen
 
-class TopActivity : AppCompatActivity(R.layout.activity_top)
+class TopActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        setContent {
+            Navigator(screen = SearchScreen())
+        }
+    }
+}

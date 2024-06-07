@@ -1,4 +1,4 @@
-package jp.co.yumemi.android.codecheck.ui
+package jp.co.yumemi.android.codecheck.ui.detail
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
