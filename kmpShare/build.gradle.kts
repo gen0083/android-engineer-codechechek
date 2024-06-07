@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.kotlinSerialization)
 }
 
 kotlin {
@@ -56,6 +57,7 @@ kotlin {
             api(libs.kotlinxDatetime)
             implementation(libs.kotlinxCoroutineCore)
             implementation(libs.ktorCore)
+            implementation(libs.kotlinxSerializationJson)
         }
         commonTest.dependencies {
             implementation(libs.kotlinTest)
