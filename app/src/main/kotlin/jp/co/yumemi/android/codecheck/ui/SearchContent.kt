@@ -37,7 +37,7 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun SearchScreen(
+fun SearchContent(
     list: List<RepositoryInfo>,
     isLoading: Boolean,
     onTextChanged: (String) -> Unit,
@@ -107,6 +107,11 @@ fun SearchScreen(
 
 @Preview
 @Composable
-private fun SearchScreenPreview() {
-    SearchScreen(list = listOf(), isLoading = true, onTextChanged = {}, onNavigate = {})
+private fun SearchContentPreview() {
+    SearchContent(
+        list = listOf(),
+        isLoading = true,
+        onTextChanged = {},
+        onNavigate = {},
+    )
 }

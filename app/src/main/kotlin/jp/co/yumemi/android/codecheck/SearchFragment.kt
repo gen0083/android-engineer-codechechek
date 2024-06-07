@@ -15,7 +15,7 @@ import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import jp.co.yumemi.android.codecheck.api.RepositoryInfo
-import jp.co.yumemi.android.codecheck.ui.SearchScreen
+import jp.co.yumemi.android.codecheck.ui.SearchContent
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchFragment : Fragment() {
@@ -32,7 +32,7 @@ class SearchFragment : Fragment() {
                 val list by viewModel.list.collectAsState()
                 val isLoading by viewModel.isLoading
                 MaterialTheme {
-                    SearchScreen(
+                    SearchContent(
                         list = list,
                         isLoading = isLoading,
                         onTextChanged = viewModel::searchResults,
