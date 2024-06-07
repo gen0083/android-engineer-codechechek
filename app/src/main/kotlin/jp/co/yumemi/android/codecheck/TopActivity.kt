@@ -7,7 +7,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import cafe.adriel.voyager.navigator.Navigator
-import jp.co.yumemi.android.codecheck.ui.SearchScreen
+import jp.co.yumemi.android.codecheck.ui.search.SearchScreen
 
 class TopActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

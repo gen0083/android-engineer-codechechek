@@ -1,4 +1,4 @@
-package jp.co.yumemi.android.codecheck.ui
+package jp.co.yumemi.android.codecheck.ui.search
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -7,7 +7,7 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.koinScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
-import jp.co.yumemi.android.codecheck.SearchScreenModel
+import jp.co.yumemi.android.codecheck.ui.detail.RepositoryDetailScreen
 
 class SearchScreen : Screen {
     @Composable

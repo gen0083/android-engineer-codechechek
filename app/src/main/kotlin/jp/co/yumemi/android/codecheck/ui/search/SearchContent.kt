@@ -1,4 +1,4 @@
-package jp.co.yumemi.android.codecheck.ui
+package jp.co.yumemi.android.codecheck.ui.search
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.ExperimentalFoundationApi

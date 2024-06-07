@@ -1,4 +1,4 @@
-package jp.co.yumemi.android.codecheck.ui
+package jp.co.yumemi.android.codecheck.ui.detail
 
 import cafe.adriel.voyager.core.model.ScreenModel
 import jp.co.yumemi.android.codecheck.api.SearchClient
