@@ -22,13 +22,6 @@ kotlin {
     wasmJs {
         browser {
             commonWebpackConfig {
-                devServer = (devServer ?: KotlinWebpackConfig.DevServer()).apply {
-                    static = (static ?: mutableListOf()).apply {
-                        add(project.projectDir.path)
-                        add(project.projectDir.path + "/commonMain/")
-                        add(project.projectDir.path + "/wasmJsMain/")
-                    }
-                }
             }
         }
         binaries.executable()
@@ -58,6 +51,8 @@ kotlin {
             implementation(libs.kotlinxCoroutineCore)
             implementation(libs.ktorCore)
             implementation(libs.kotlinxSerializationJson)
+
+            implementation(libs.koinCore)
         }
         commonTest.dependencies {
             implementation(libs.kotlinTest)
@@ -69,6 +64,7 @@ kotlin {
         }
         wasmJsMain.dependencies {
             implementation(libs.kotlinxCoroutineCoreJs)
+            implementation(libs.ktorCoreJs)
         }
     }
 }
