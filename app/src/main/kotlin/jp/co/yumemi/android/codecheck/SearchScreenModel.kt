@@ -5,18 +5,18 @@ package jp.co.yumemi.android.codecheck
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import cafe.adriel.voyager.core.model.ScreenModel
+import cafe.adriel.voyager.core.model.screenModelScope
 import jp.co.yumemi.android.codecheck.api.RepositoryInfo
 import jp.co.yumemi.android.codecheck.api.SearchClient
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import org.koin.android.annotation.KoinViewModel
+import org.koin.core.annotation.Singleton
 
-@KoinViewModel
-class SearchViewModel(
+@Singleton
+class SearchScreenModel(
     private val searchClient: SearchClient,
-) : ViewModel() {
+) : ScreenModel {
     val list: StateFlow<List<RepositoryInfo>>
         field = kotlinx.coroutines.flow.MutableStateFlow<List<RepositoryInfo>>(
             kotlin.collections.listOf(),
@@ -27,7 +27,7 @@ class SearchViewModel(
     // 検索結果
     fun searchResults(inputText: String) {
         if (inputText.isBlank()) return
-        viewModelScope.launch {
+        screenModelScope.launch {
             isLoading.value = true
             list.value = searchClient.searchRepository(inputText)
             isLoading.value = false
