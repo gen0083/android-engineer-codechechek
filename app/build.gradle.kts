@@ -29,12 +29,13 @@ android {
             isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
 
     compileOptions {
+        isCoreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.toVersion(libs.versions.javaVersion.get().toInt())
         targetCompatibility = JavaVersion.toVersion(libs.versions.javaVersion.get().toInt())
     }
@@ -85,6 +86,9 @@ kotlin {
 }
 
 dependencies {
+    coreLibraryDesugaring(libs.desugar)
+
+    implementation(project(":kmpShare"))
     implementation(libs.androidxCoreKtx)
 
     implementation(libs.androidxActivityCompose)

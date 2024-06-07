@@ -6,7 +6,8 @@ import io.ktor.client.request.get
 import io.ktor.client.request.header
 import io.ktor.client.request.parameter
 import io.ktor.client.statement.HttpResponse
-import java.util.Date
+import kotlinx.datetime.Clock
+import kotlinx.datetime.Instant
 import kotlinx.serialization.json.Json
 import org.koin.core.annotation.Single
 
@@ -15,7 +16,7 @@ class SearchClient(
     private val client: HttpClient,
     private val json: Json,
 ) {
-    var lastSearchDate = Date()
+    var lastSearchDate: Instant = Clock.System.now()
         private set
 
     suspend fun searchRepository(query: String): List<RepositoryInfo> {
@@ -25,7 +26,7 @@ class SearchClient(
         }
 
         val jsonResponse = json.decodeFromString<RepositorySearchResponse>(response.body())
-        lastSearchDate = Date()
+        lastSearchDate = Clock.System.now()
 
         return jsonResponse.items
     }

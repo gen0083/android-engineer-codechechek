@@ -46,12 +46,14 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            //put your multiplatform dependencies here
             implementation(compose.runtime)
             implementation(compose.ui)
             implementation(compose.material3)
             implementation(compose.foundation)
             implementation(compose.components.resources)
+
+            // TODO: appモジュールで参照するため一時的にapiにする
+            api(libs.kotlinxDatetime)
         }
         commonTest.dependencies {
             implementation(libs.kotlinTest)
