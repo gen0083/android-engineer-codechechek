@@ -1,5 +1,4 @@
 import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
-import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -7,6 +6,7 @@ plugins {
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.kotlinSerialization)
+    alias(libs.plugins.ksp)
 }
 
 kotlin {
@@ -57,9 +57,12 @@ kotlin {
         commonTest.dependencies {
             implementation(libs.kotlinTest)
             implementation(libs.kotestAssertion)
+
+            implementation(libs.koinTest)
         }
         androidMain.dependencies {
             implementation(libs.kotlinxCoroutineAndroid)
+
             implementation(libs.koinAndroid)
         }
         wasmJsMain.dependencies {
