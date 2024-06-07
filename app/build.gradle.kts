@@ -119,6 +119,10 @@ dependencies {
     implementation(libs.koinAnnotation)
     ksp(libs.koinKspCompiler)
 
+    implementation(libs.voyagerNavigator)
+    implementation(libs.voyagerScreenModel)
+    implementation(libs.voyagerKoin)
+
     testImplementation(libs.junit)
     testImplementation(libs.kotestAssertion)
     testImplementation(libs.koinTest)
