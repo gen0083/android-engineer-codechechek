@@ -1,11 +1,8 @@
 package jp.co.yumemi.android.codecheck.api
 
-import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-@Parcelize
 @Serializable
 data class RepositoryInfo(
     @SerialName("full_name")
@@ -21,14 +18,13 @@ data class RepositoryInfo(
     val forksCount: Long,
     @SerialName("open_issues_count")
     val openIssuesCount: Long,
-) : Parcelable
+)
 
-@Parcelize
 @Serializable
 data class RepositoryOwner(
     @SerialName("avatar_url")
     val ownerIconUrl: String,
-) : Parcelable
+)
 
 @Serializable
 data class RepositorySearchResponse(
