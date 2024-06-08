@@ -54,6 +54,8 @@ kotlin {
             implementation(libs.kotlinxSerializationJson)
 
             implementation(libs.koinCore)
+
+            implementation(libs.coilCompose)
         }
         commonTest.dependencies {
             implementation(libs.kotlinTest)
