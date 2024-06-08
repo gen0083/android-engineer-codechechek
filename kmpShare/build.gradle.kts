@@ -45,6 +45,10 @@ kotlin {
 
             implementation(libs.coil3ComposeCore)
             implementation(libs.coil3NetworkKtor)
+
+            // voyager
+            implementation(libs.voyagerNavigator)
+            implementation(libs.voyagerScreenModel)
         }
         commonTest.dependencies {
             implementation(libs.kotlinTest)
@@ -56,6 +60,7 @@ kotlin {
             implementation(libs.kotlinxCoroutineAndroid)
 
             implementation(libs.koinAndroid)
+            implementation(libs.voyagerKoin)
         }
         wasmJsMain.dependencies {
             implementation(libs.ktorCoreJs)
