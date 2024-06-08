@@ -77,6 +77,8 @@ dependencies {
     implementation(libs.androidxCoreKtx)
     implementation(libs.googleMaterial)
 
+    implementation(libs.koinAndroid)
+
     implementation(libs.androidxActivityCompose)
     implementation(libs.androidxFragmentCompose)
     implementation(libs.androidxComposeMaterial)
