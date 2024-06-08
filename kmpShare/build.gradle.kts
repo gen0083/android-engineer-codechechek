@@ -58,7 +58,6 @@ kotlin {
             implementation(libs.koinAndroid)
         }
         wasmJsMain.dependencies {
-            implementation(libs.kotlinxCoroutineCoreJs)
             implementation(libs.ktorCoreJs)
         }
     }
