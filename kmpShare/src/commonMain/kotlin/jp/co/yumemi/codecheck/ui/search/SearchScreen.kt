@@ -1,19 +1,30 @@
-package jp.co.yumemi.android.codecheck.ui.search
+package jp.co.yumemi.codecheck.ui.search
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import cafe.adriel.voyager.core.model.rememberScreenModel
 import cafe.adriel.voyager.core.screen.Screen
-import cafe.adriel.voyager.koin.koinScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
-import jp.co.yumemi.android.codecheck.ui.detail.RepositoryDetailScreen
+import jp.co.yumemi.codecheck.api.SearchClient
+import jp.co.yumemi.codecheck.httpClient
+import jp.co.yumemi.codecheck.ui.detail.RepositoryDetailScreen
+import kotlinx.serialization.json.Json
 
 class SearchScreen : Screen {
     @Composable
     override fun Content() {
         val navigator = LocalNavigator.currentOrThrow
-        val screenModel = koinScreenModel<SearchScreenModel>()
+        val screenModel = rememberScreenModel<SearchScreenModel> {
+            // TODO: 一時的にこうしてるだけ
+            SearchScreenModel(
+                SearchClient(
+                    httpClient(),
+                    Json { ignoreUnknownKeys = true },
+                ),
+            )
+        }
         val state by screenModel.state.collectAsState()
 
         SearchContent(

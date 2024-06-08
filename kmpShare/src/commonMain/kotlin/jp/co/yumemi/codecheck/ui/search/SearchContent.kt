@@ -1,4 +1,4 @@
-package jp.co.yumemi.android.codecheck.ui.search
+package jp.co.yumemi.codecheck.ui.search
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -28,10 +28,9 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import jp.co.yumemi.android.codecheck.api.RepositoryInfo
+import jp.co.yumemi.codecheck.api.RepositoryInfo
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.launch
 
@@ -103,15 +102,4 @@ fun SearchContent(
             }
         }
     }
-}
-
-@Preview
-@Composable
-private fun SearchContentPreview() {
-    SearchContent(
-        list = listOf(),
-        isLoading = true,
-        onTextChanged = {},
-        onNavigate = {},
-    )
 }

@@ -6,15 +6,14 @@ package jp.co.yumemi.android.codecheck
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import cafe.adriel.voyager.navigator.Navigator
-import jp.co.yumemi.android.codecheck.ui.search.SearchScreen
+import jp.co.yumemi.codecheck.App
 
 class TopActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContent {
-            Navigator(screen = SearchScreen())
+            App()
         }
     }
 }

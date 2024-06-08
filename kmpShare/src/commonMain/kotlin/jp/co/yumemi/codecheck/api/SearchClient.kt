@@ -1,4 +1,4 @@
-package jp.co.yumemi.android.codecheck.api
+package jp.co.yumemi.codecheck.api
 
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
@@ -9,9 +9,7 @@ import io.ktor.client.statement.HttpResponse
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 import kotlinx.serialization.json.Json
-import org.koin.core.annotation.Single
 
-@Single
 class SearchClient(
     private val client: HttpClient,
     private val json: Json,

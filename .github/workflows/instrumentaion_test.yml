@@ -12,4 +12,5 @@ jobs:
           distribution: "temurin"
           cache: gradle
       - name: AndroidTest
-        run: "./gradlew testDebugUnitTest --console rich"
+        run: |
+          ./gradlew pixel4api33DebugAndroidTest --console rich

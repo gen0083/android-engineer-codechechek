@@ -1,11 +1,12 @@
 import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
-import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.kotlinSerialization)
+    alias(libs.plugins.ksp)
 }
 
 kotlin {
@@ -21,27 +22,9 @@ kotlin {
     wasmJs {
         browser {
             commonWebpackConfig {
-                devServer = (devServer ?: KotlinWebpackConfig.DevServer()).apply {
-                    static = (static ?: mutableListOf()).apply {
-                        add(project.projectDir.path)
-                        add(project.projectDir.path + "/commonMain/")
-                        add(project.projectDir.path + "/wasmJsMain/")
-                    }
-                }
             }
         }
         binaries.executable()
-    }
-
-    listOf(
-        iosX64(),
-        iosArm64(),
-        iosSimulatorArm64(),
-    ).forEach {
-        it.binaries.framework {
-            baseName = "kmp"
-            isStatic = true
-        }
     }
 
     sourceSets {
@@ -54,12 +37,35 @@ kotlin {
 
             // TODO: appモジュールで参照するため一時的にapiにする
             api(libs.kotlinxDatetime)
+            implementation(libs.kotlinxCoroutineCore)
+            implementation(libs.ktorCore)
+            implementation(libs.kotlinxSerializationJson)
+
+            implementation(libs.koinCore)
+
+            implementation(libs.coil3ComposeCore)
+            implementation(libs.coil3NetworkKtor)
+
+            // voyager
+            implementation(libs.voyagerNavigator)
+            implementation(libs.voyagerScreenModel)
         }
         commonTest.dependencies {
             implementation(libs.kotlinTest)
             implementation(libs.kotestAssertion)
+
+            implementation(libs.koinTest)
+        }
+        androidMain.dependencies {
+            implementation(libs.kotlinxCoroutineAndroid)
+            implementation(libs.ktorCio)
+
+            implementation(libs.koinAndroid)
+            implementation(libs.voyagerKoin)
         }
         wasmJsMain.dependencies {
+            implementation(libs.ktorCoreJs)
+            implementation(libs.ktorClientJsWasmJs)
         }
     }
 }

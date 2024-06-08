@@ -1,16 +1,14 @@
-package jp.co.yumemi.android.codecheck.ui.detail
+package jp.co.yumemi.codecheck.ui.detail
 
 import cafe.adriel.voyager.core.model.ScreenModel
-import jp.co.yumemi.android.codecheck.api.SearchClient
+import jp.co.yumemi.codecheck.api.SearchClient
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.format
 import kotlinx.datetime.format.Padding
 import kotlinx.datetime.format.char
 import kotlinx.datetime.toLocalDateTime
-import org.koin.core.annotation.Factory
 
-@Factory
 class RepositoryDetailScreenModel(
     private val searchClient: SearchClient,
 ) : ScreenModel {
