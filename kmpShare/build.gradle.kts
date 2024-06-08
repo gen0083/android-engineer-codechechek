@@ -44,7 +44,7 @@ kotlin {
 
             implementation(libs.koinCore)
 
-            implementation(libs.coilCompose)
+            implementation(libs.coil3ComposeCore)
         }
         commonTest.dependencies {
             implementation(libs.kotlinTest)
