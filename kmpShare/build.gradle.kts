@@ -58,6 +58,7 @@ kotlin {
         }
         androidMain.dependencies {
             implementation(libs.kotlinxCoroutineAndroid)
+            implementation(libs.ktorCio)
 
             implementation(libs.koinAndroid)
             implementation(libs.voyagerKoin)
