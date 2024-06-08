@@ -1,12 +1,11 @@
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 
 plugins {
-    alias(libs.plugins.androidApplication)
-    alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.kotlinSerialization)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
-    id("kotlin-parcelize")
+    alias(libs.plugins.androidApplication)
 }
 
 android {
@@ -37,10 +36,6 @@ android {
         isCoreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.toVersion(libs.versions.javaVersion.get().toInt())
         targetCompatibility = JavaVersion.toVersion(libs.versions.javaVersion.get().toInt())
-    }
-
-    kotlinOptions {
-        jvmTarget = libs.versions.javaVersion.get()
     }
 
     buildFeatures {
@@ -74,13 +69,6 @@ android {
 tasks.withType(Test::class.java) {
     testLogging {
         exceptionFormat = TestExceptionFormat.FULL
-    }
-}
-
-kotlin {
-    jvmToolchain(libs.versions.javaVersion.get().toInt())
-    sourceSets.all {
-        languageSettings.enableLanguageFeature("ExplicitBackingFields")
     }
 }
 
