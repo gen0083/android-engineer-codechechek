@@ -1,18 +1,13 @@
 package jp.co.yumemi.codecheck.api
 
 import io.kotest.matchers.shouldBe
-import io.ktor.client.HttpClient
-import io.ktor.client.engine.cio.CIO
+import jp.co.yumemi.codecheck.httpClient
 import kotlin.test.Test
 import kotlinx.coroutines.runBlocking
-import kotlinx.serialization.json.Json
 import org.koin.test.KoinTest
 
 class SearchClientTest : KoinTest {
-    private val client = SearchClient(
-        HttpClient(CIO),
-        Json { ignoreUnknownKeys = true },
-    )
+    private val client = httpClient()
 
     @Test
     fun `response_total_count=11`(): Unit = runBlocking {
