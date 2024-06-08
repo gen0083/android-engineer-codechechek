@@ -3,7 +3,6 @@ import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
-    alias(libs.plugins.ksp)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
 }
@@ -19,7 +18,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "jp.co.yumemi.android.codecheck.InstrumentationTestRunner"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -39,7 +38,6 @@ android {
     }
 
     buildFeatures {
-        viewBinding = true
         compose = true
         buildConfig = true
     }
@@ -87,26 +85,6 @@ dependencies {
     debugImplementation(libs.androidxComposeTooling)
     androidTestImplementation(libs.androidxComposeTest)
     debugImplementation(libs.androidxComposeManifest)
-
-    implementation(libs.androidxLifecycleViewmodelKtx)
-    implementation(libs.androidxLifecycleLivedataKtx)
-    implementation(libs.androidxLifecycleRuntimeKtx)
-
-    implementation(libs.kotlinxCoroutineAndroid)
-    implementation(libs.ktorClientAndroid)
-    implementation(libs.kotlinxSerializationJson)
-
-    implementation(libs.coilCompose)
-
-    implementation(libs.koinCore)
-    implementation(libs.koinAndroid)
-    implementation(libs.koinKtor)
-    implementation(libs.koinAnnotation)
-    ksp(libs.koinKspCompiler)
-
-    implementation(libs.voyagerNavigator)
-    implementation(libs.voyagerScreenModel)
-    implementation(libs.voyagerKoin)
 
     testImplementation(libs.junit)
     testImplementation(libs.kotestAssertion)

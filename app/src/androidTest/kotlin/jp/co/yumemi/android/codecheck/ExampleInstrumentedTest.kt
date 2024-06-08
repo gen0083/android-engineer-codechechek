@@ -8,7 +8,7 @@ import io.ktor.client.request.header
 import io.ktor.client.request.parameter
 import io.ktor.client.statement.HttpResponse
 import io.ktor.client.statement.bodyAsText
-import jp.co.yumemi.android.codecheck.api.RepositorySearchResponse
+import jp.co.yumemi.codecheck.api.RepositorySearchResponse
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.json.Json
 import org.junit.Assert.assertEquals
