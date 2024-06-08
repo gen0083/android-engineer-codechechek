@@ -7,23 +7,15 @@ import cafe.adriel.voyager.core.model.rememberScreenModel
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
-import jp.co.yumemi.codecheck.api.SearchClient
-import jp.co.yumemi.codecheck.httpClient
 import jp.co.yumemi.codecheck.ui.detail.RepositoryDetailScreen
-import kotlinx.serialization.json.Json
+import org.koin.core.component.KoinComponent
 
-class SearchScreen : Screen {
+class SearchScreen : Screen, KoinComponent {
     @Composable
     override fun Content() {
         val navigator = LocalNavigator.currentOrThrow
         val screenModel = rememberScreenModel<SearchScreenModel> {
-            // TODO: 一時的にこうしてるだけ
-            SearchScreenModel(
-                SearchClient(
-                    httpClient(),
-                    Json { ignoreUnknownKeys = true },
-                ),
-            )
+            getKoin().get<SearchScreenModel>()
         }
         val state by screenModel.state.collectAsState()
 
