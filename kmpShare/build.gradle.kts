@@ -55,6 +55,7 @@ kotlin {
             implementation(libs.kotestAssertion)
 
             implementation(libs.koinTest)
+            implementation(libs.kotlinxCoroutineTest)
         }
         androidMain.dependencies {
             implementation(libs.kotlinxCoroutineAndroid)
