@@ -77,9 +77,9 @@ kotlin {
             implementation(libs.voyagerKoin)
         }
         jsMain.dependencies {
+            implementation(libs.ktorCoreJs)
         }
         wasmJsMain.dependencies {
-            implementation(libs.ktorCoreJs)
             implementation(libs.ktorClientJsWasmJs)
         }
     }
