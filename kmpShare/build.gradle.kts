@@ -18,6 +18,17 @@ kotlin {
         }
     }
 
+    js(IR) {
+        useCommonJs()
+        browser {
+            commonWebpackConfig {
+            }
+            binaries.executable()
+        }
+        nodejs {
+        }
+    }
+
     @OptIn(ExperimentalWasmDsl::class)
     wasmJs {
         browser {
@@ -63,6 +74,8 @@ kotlin {
 
             implementation(libs.koinAndroid)
             implementation(libs.voyagerKoin)
+        }
+        jsMain.dependencies {
         }
         wasmJsMain.dependencies {
             implementation(libs.ktorCoreJs)
