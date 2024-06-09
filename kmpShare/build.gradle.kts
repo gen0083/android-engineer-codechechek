@@ -18,6 +18,17 @@ kotlin {
         }
     }
 
+    js(IR) {
+        useCommonJs()
+        browser {
+            commonWebpackConfig {
+            }
+            binaries.executable()
+        }
+        nodejs {
+        }
+    }
+
     @OptIn(ExperimentalWasmDsl::class)
     wasmJs {
         browser {
@@ -39,6 +50,7 @@ kotlin {
             api(libs.kotlinxDatetime)
             implementation(libs.kotlinxCoroutineCore)
             implementation(libs.ktorCore)
+            implementation(libs.ktorClientLogging)
             implementation(libs.kotlinxSerializationJson)
 
             implementation(libs.koinCore)
@@ -64,8 +76,11 @@ kotlin {
             implementation(libs.koinAndroid)
             implementation(libs.voyagerKoin)
         }
-        wasmJsMain.dependencies {
+        jsMain.dependencies {
             implementation(libs.ktorCoreJs)
+            implementation(libs.kotlinxCoroutineCoreJs)
+        }
+        wasmJsMain.dependencies {
             implementation(libs.ktorClientJsWasmJs)
         }
     }
