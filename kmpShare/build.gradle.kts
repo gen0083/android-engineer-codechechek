@@ -50,6 +50,7 @@ kotlin {
             api(libs.kotlinxDatetime)
             implementation(libs.kotlinxCoroutineCore)
             implementation(libs.ktorCore)
+            implementation(libs.ktorClientLogging)
             implementation(libs.kotlinxSerializationJson)
 
             implementation(libs.koinCore)
