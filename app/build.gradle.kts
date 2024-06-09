@@ -80,11 +80,6 @@ dependencies {
     implementation(libs.koinAndroid)
 
     implementation(libs.androidxActivityCompose)
-    implementation(libs.androidxFragmentCompose)
-    implementation(libs.androidxComposeMaterial)
-    implementation(libs.androidxComposeFoundation)
-    implementation(libs.androidxComposeToolingPreview)
-    debugImplementation(libs.androidxComposeTooling)
     androidTestImplementation(libs.androidxComposeTest)
     debugImplementation(libs.androidxComposeManifest)
 
