@@ -14,7 +14,7 @@ android {
     defaultConfig {
         applicationId = "jp.co.yumemi.android.codecheck"
         minSdk = 23
-        targetSdk = 31
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
