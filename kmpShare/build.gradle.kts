@@ -78,6 +78,7 @@ kotlin {
         }
         jsMain.dependencies {
             implementation(libs.ktorCoreJs)
+            implementation(libs.kotlinxCoroutineCoreJs)
         }
         wasmJsMain.dependencies {
             implementation(libs.ktorClientJsWasmJs)

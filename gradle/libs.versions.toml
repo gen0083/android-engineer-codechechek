@@ -4,7 +4,7 @@ kotlin = "2.0.0"
 ksp = "2.0.0-1.0.22"
 javaVersion = "17"
 
-coroutine = "1.9.0-RC"
+coroutine = "1.8.1"
 ktor = "3.0.0-wasm2"
 lifecycle = "2.5.1"
 koin = "3.6.0-wasm-alpha2"
