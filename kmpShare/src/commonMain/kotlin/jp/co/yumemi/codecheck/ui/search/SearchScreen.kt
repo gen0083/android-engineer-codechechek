@@ -9,13 +9,14 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import jp.co.yumemi.codecheck.ui.detail.RepositoryDetailScreen
 import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
 class SearchScreen : Screen, KoinComponent {
     @Composable
     override fun Content() {
         val navigator = LocalNavigator.currentOrThrow
         val screenModel = rememberScreenModel<SearchScreenModel> {
-            getKoin().get<SearchScreenModel>()
+            inject<SearchScreenModel>().value
         }
         val state by screenModel.state.collectAsState()
 

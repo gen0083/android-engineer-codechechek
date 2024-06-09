@@ -5,6 +5,7 @@ import cafe.adriel.voyager.core.model.rememberScreenModel
 import cafe.adriel.voyager.core.screen.Screen
 import jp.co.yumemi.codecheck.api.RepositoryInfo
 import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
 data class RepositoryDetailScreen(
     private val info: RepositoryInfo,
@@ -13,7 +14,7 @@ data class RepositoryDetailScreen(
     override fun Content() {
         val screenModel: RepositoryDetailScreenModel =
             rememberScreenModel<RepositoryDetailScreenModel> {
-                getKoin().get<RepositoryDetailScreenModel>()
+                inject<RepositoryDetailScreenModel>().value
             }
 
         RepositoryDetailContent(
