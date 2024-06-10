@@ -76,13 +76,18 @@ fun SearchContent(
         )
         Box(
             modifier = Modifier.fillMaxSize(),
-            contentAlignment = Alignment.Center,
         ) {
             if (isLoading) {
-                CircularProgressIndicator()
+                CircularProgressIndicator(
+                    modifier = Modifier.align(Alignment.Center),
+                )
             }
             if (list.isEmpty()) {
-                Text(text = "empty")
+                Text(
+                    text = "empty",
+                    style = MaterialTheme.typography.displayLarge,
+                    modifier = Modifier.align(Alignment.Center),
+                )
             } else {
                 LazyColumn(
                     verticalArrangement = Arrangement.spacedBy(8.dp),
@@ -92,7 +97,7 @@ fun SearchContent(
                         val item = list[it]
                         Text(
                             text = item.name,
-                            fontSize = 12.sp,
+                            style = MaterialTheme.typography.bodyLarge,
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .clickable { onNavigate(item) },
