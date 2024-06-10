@@ -126,6 +126,7 @@ fun SearchContent(
                 color = MaterialTheme.colorScheme.onBackground,
                 fontSize = 20.sp,
             ),
+            cursorBrush = SolidColor(MaterialTheme.colorScheme.onBackground),
         )
         Box(
             modifier = Modifier.fillMaxSize(),
