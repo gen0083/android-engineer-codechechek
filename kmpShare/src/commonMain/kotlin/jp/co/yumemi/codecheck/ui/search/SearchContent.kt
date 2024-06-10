@@ -38,13 +38,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.layout.LastBaseline
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import jp.co.yumemi.codecheck.api.RepositoryInfo
+import jp.co.yumemi.codecheck.resources.Res
+import jp.co.yumemi.codecheck.resources.searchInputText_hint
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.launch
+import org.jetbrains.compose.resources.stringResource
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -86,7 +90,15 @@ fun SearchContent(
                         tint = MaterialTheme.colorScheme.onBackground,
                     )
                     Spacer(Modifier.width(8.dp))
-                    innerTextField()
+                    Box(modifier = Modifier.weight(1f)) {
+                        innerTextField()
+                        if (textState.text.isBlank()) {
+                            Text(
+                                text = stringResource(Res.string.searchInputText_hint),
+                                color = MaterialTheme.colorScheme.onBackground,
+                            )
+                        }
+                    }
                     Spacer(Modifier.width(8.dp))
                     IconButton(
                         onClick = {},
