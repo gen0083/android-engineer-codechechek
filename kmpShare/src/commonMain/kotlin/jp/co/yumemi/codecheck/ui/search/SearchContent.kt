@@ -85,6 +85,7 @@ fun SearchContent(
             if (list.isEmpty()) {
                 Text(
                     text = "empty",
+                    style = MaterialTheme.typography.displayLarge,
                     modifier = Modifier.align(Alignment.Center),
                 )
             } else {
@@ -96,7 +97,7 @@ fun SearchContent(
                         val item = list[it]
                         Text(
                             text = item.name,
-                            fontSize = 12.sp,
+                            style = MaterialTheme.typography.bodyLarge,
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .clickable { onNavigate(item) },
