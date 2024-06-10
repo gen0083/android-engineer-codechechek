@@ -69,7 +69,7 @@ fun SearchContent(
             }
         }
     }
-    Column(modifier = modifier) {
+    Column(modifier = modifier.imePadding()) {
         SearchTextField(
             textState = textState,
             onTextChanged = onTextChanged,
@@ -87,7 +87,6 @@ fun SearchContent(
                 LazyColumn(
                     verticalArrangement = Arrangement.spacedBy(8.dp),
                     contentPadding = PaddingValues(4.dp),
-                    modifier = Modifier.imePadding(),
                 ) {
                     items(count = list.size, key = { list[it].hashCode() }) {
                         val item = list[it]
