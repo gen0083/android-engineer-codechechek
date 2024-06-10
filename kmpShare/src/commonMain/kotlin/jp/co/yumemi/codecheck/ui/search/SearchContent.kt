@@ -36,6 +36,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.minimumInteractiveComponentSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
@@ -139,6 +140,7 @@ fun SearchTextField(
                     imageVector = Icons.Default.Search,
                     contentDescription = "",
                     tint = MaterialTheme.colorScheme.onBackground,
+                    modifier = Modifier.minimumInteractiveComponentSize(),
                 )
                 Spacer(Modifier.width(8.dp))
                 Box(modifier = Modifier.weight(1f)) {
