@@ -68,7 +68,10 @@ fun SearchContent(
                     shape = RoundedCornerShape(4.dp),
                 )
                 .padding(8.dp),
-            textStyle = TextStyle(fontSize = 20.sp),
+            textStyle = TextStyle(
+                color = MaterialTheme.colorScheme.onBackground,
+                fontSize = 20.sp,
+            ),
         )
         Box(
             modifier = Modifier.fillMaxSize(),

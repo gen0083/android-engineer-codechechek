@@ -14,7 +14,7 @@ android {
     defaultConfig {
         applicationId = "jp.co.yumemi.android.codecheck"
         minSdk = 23
-        targetSdk = 31
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -80,11 +80,6 @@ dependencies {
     implementation(libs.koinAndroid)
 
     implementation(libs.androidxActivityCompose)
-    implementation(libs.androidxFragmentCompose)
-    implementation(libs.androidxComposeMaterial)
-    implementation(libs.androidxComposeFoundation)
-    implementation(libs.androidxComposeToolingPreview)
-    debugImplementation(libs.androidxComposeTooling)
     androidTestImplementation(libs.androidxComposeTest)
     debugImplementation(libs.androidxComposeManifest)
 
