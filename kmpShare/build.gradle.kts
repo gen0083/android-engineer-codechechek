@@ -102,4 +102,8 @@ android {
         sourceCompatibility = JavaVersion.toVersion(libs.versions.javaVersion.get())
         targetCompatibility = JavaVersion.toVersion(libs.versions.javaVersion.get())
     }
+    dependencies {
+        implementation(libs.androidxComposeToolingPreview)
+        debugImplementation(libs.androidxComposeTooling)
+    }
 }
