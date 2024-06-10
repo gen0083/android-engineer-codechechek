@@ -90,6 +90,8 @@ dependencies {
     testImplementation(libs.kotestAssertion)
     testImplementation(libs.koinTest)
     testImplementation(libs.robolectric)
+    testImplementation(libs.androidxComposeTest)
+
     androidTestImplementation(libs.androidxTextJunit)
     androidTestImplementation(libs.androidxTestEspressoCore)
     androidTestImplementation(libs.kotestAssertion)
