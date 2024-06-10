@@ -23,10 +23,11 @@ import androidx.compose.foundation.text2.BasicTextField2
 import androidx.compose.foundation.text2.TextFieldDecorator
 import androidx.compose.foundation.text2.input.TextFieldLineLimits
 import androidx.compose.foundation.text2.input.TextFieldState
+import androidx.compose.foundation.text2.input.clearText
 import androidx.compose.foundation.text2.input.rememberTextFieldState
 import androidx.compose.foundation.text2.input.textAsFlow
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.HorizontalDivider
@@ -147,7 +148,9 @@ fun SearchTextField(
                 }
                 Spacer(Modifier.width(8.dp))
                 IconButton(
-                    onClick = {},
+                    onClick = {
+                        textState.clearText()
+                    },
                     colors = IconButtonDefaults.iconButtonColors(),
                     modifier = Modifier
                         .alignBy(LastBaseline),
