@@ -76,13 +76,17 @@ fun SearchContent(
         )
         Box(
             modifier = Modifier.fillMaxSize(),
-            contentAlignment = Alignment.Center,
         ) {
             if (isLoading) {
-                CircularProgressIndicator()
+                CircularProgressIndicator(
+                    modifier = Modifier.align(Alignment.Center),
+                )
             }
             if (list.isEmpty()) {
-                Text(text = "empty")
+                Text(
+                    text = "empty",
+                    modifier = Modifier.align(Alignment.Center),
+                )
             } else {
                 LazyColumn(
                     verticalArrangement = Arrangement.spacedBy(8.dp),
