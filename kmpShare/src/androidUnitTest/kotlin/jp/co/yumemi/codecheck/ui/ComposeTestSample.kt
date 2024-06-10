@@ -1,12 +1,11 @@
 package jp.co.yumemi.codecheck.ui
 
-import androidx.compose.ui.input.key.Key
 import androidx.compose.ui.test.ExperimentalTestApi
+import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
-import androidx.compose.ui.test.onParent
-import androidx.compose.ui.test.performKeyInput
+import androidx.compose.ui.test.onRoot
 import androidx.compose.ui.test.performTextInput
 import com.github.takahirom.roborazzi.captureRoboImage
 import jp.co.yumemi.codecheck.App
@@ -39,13 +38,17 @@ class ComposeTestSample {
     fun inputTest() = runTest {
         composeRule.setContent { App() }
         composeRule.awaitIdle()
+        // テキスト入力しただけでrecompositionは発生しない
         composeRule.onNodeWithTag("edit")
             .performTextInput("gen0083")
-        composeRule.onNodeWithTag("edit")
-            .performKeyInput { keyDown(Key.Search) }
-        composeRule.waitForIdle()
-        composeRule.onNodeWithTag("edit")
-            .onParent()
+        // composeRuleでなにかするとrecompositionが起こる
+        // https://developer.android.com/develop/ui/compose/testing/synchronization
+        composeRule.waitUntilAtLeastOneExists(
+            hasTestTag("result"),
+            5_000,
+        )
+        // キャプチャを取る→すでに画像が存在している場合、画像に変化がある場合にテストに失敗する
+        composeRule.onRoot()
             .captureRoboImage("build/compose.png")
         composeRule.onNode(hasText("gen0083/textlint-myrule"))
             .assertExists()

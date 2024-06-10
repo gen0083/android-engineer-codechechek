@@ -101,6 +101,7 @@ fun SearchContent(
                             text = item.name,
                             style = MaterialTheme.typography.bodyLarge,
                             modifier = Modifier
+                                .testTag("result")
                                 .fillMaxWidth()
                                 .clickable { onNavigate(item) },
                         )
