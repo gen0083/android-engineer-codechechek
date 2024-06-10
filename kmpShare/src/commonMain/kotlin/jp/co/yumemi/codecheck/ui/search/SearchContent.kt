@@ -10,12 +10,10 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
@@ -133,8 +131,7 @@ fun SearchTextField(
             Row(
                 modifier = Modifier
                     .background(MaterialTheme.colorScheme.background)
-                    .fillMaxWidth()
-                    .padding(horizontal = 8.dp),
+                    .fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Icon(
@@ -143,7 +140,6 @@ fun SearchTextField(
                     tint = MaterialTheme.colorScheme.onBackground,
                     modifier = Modifier.minimumInteractiveComponentSize(),
                 )
-                Spacer(Modifier.width(8.dp))
                 Box(modifier = Modifier.weight(1f)) {
                     innerTextField()
                     if (textState.text.isBlank()) {
@@ -159,7 +155,6 @@ fun SearchTextField(
                         )
                     }
                 }
-                Spacer(Modifier.width(8.dp))
                 if (textState.text.isNotBlank()) {
                     IconButton(
                         onClick = {
