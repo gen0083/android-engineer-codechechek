@@ -147,19 +147,21 @@ fun SearchTextField(
                     }
                 }
                 Spacer(Modifier.width(8.dp))
-                IconButton(
-                    onClick = {
-                        textState.clearText()
-                    },
-                    colors = IconButtonDefaults.iconButtonColors(),
-                    modifier = Modifier
-                        .alignBy(LastBaseline),
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.Clear,
-                        contentDescription = "delete",
-                        tint = MaterialTheme.colorScheme.onBackground,
-                    )
+                if (textState.text.isNotBlank()) {
+                    IconButton(
+                        onClick = {
+                            textState.clearText()
+                        },
+                        colors = IconButtonDefaults.iconButtonColors(),
+                        modifier = Modifier
+                            .alignBy(LastBaseline),
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Clear,
+                            contentDescription = "delete",
+                            tint = MaterialTheme.colorScheme.onBackground,
+                        )
+                    }
                 }
             }
         },
