@@ -156,7 +156,7 @@ fun SearchTextField(
                         .alignBy(LastBaseline),
                 ) {
                     Icon(
-                        imageVector = Icons.Default.Delete,
+                        imageVector = Icons.Default.Clear,
                         contentDescription = "delete",
                         tint = MaterialTheme.colorScheme.onBackground,
                     )
