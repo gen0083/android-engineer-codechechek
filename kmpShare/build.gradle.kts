@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.kotlinSerialization)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.roborazzi)
 }
 
 kotlin {
@@ -102,8 +103,20 @@ android {
         sourceCompatibility = JavaVersion.toVersion(libs.versions.javaVersion.get())
         targetCompatibility = JavaVersion.toVersion(libs.versions.javaVersion.get())
     }
+    testOptions.unitTests.isIncludeAndroidResources = true
+
     dependencies {
         implementation(libs.androidxComposeToolingPreview)
         debugImplementation(libs.androidxComposeTooling)
+
+        testImplementation(libs.junit)
+        testImplementation(libs.kotestAssertion)
+        testImplementation(libs.koinTest)
+        testImplementation(libs.robolectric)
+        testImplementation(libs.androidxComposeTest)
+        debugImplementation(libs.androidxComposeManifest)
+        testImplementation(libs.roborazziCore)
+        testImplementation(libs.roborazziCompose)
+        testImplementation(libs.roborazziJunitRule)
     }
 }
