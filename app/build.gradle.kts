@@ -92,6 +92,9 @@ dependencies {
     testImplementation(libs.koinTest)
     testImplementation(libs.robolectric)
     testImplementation(libs.androidxComposeTest)
+    testImplementation(libs.roborazziCore)
+    testImplementation(libs.roborazziCompose)
+    testImplementation(libs.roborazziJunitRule)
 
     androidTestImplementation(libs.androidxTextJunit)
     androidTestImplementation(libs.androidxTestEspressoCore)
