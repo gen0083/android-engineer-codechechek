@@ -19,6 +19,8 @@
 ### 環境
 
 - IDE：Android Studio Jellyfish | 2023.3.1 Patch 1
+- (Android Studio Koala Feature Drop | 2024.1.2 Nightly 2024-06-07でないとLayout
+  Inspectorが動かないかも)
 - Kotlin：2.0
 - Compose Multiplatform: 1.6.11
 - Java：17
