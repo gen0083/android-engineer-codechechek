@@ -22,6 +22,7 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text2.BasicTextField2
 import androidx.compose.foundation.text2.TextFieldDecorator
 import androidx.compose.foundation.text2.input.TextFieldLineLimits
+import androidx.compose.foundation.text2.input.TextFieldState
 import androidx.compose.foundation.text2.input.rememberTextFieldState
 import androidx.compose.foundation.text2.input.textAsFlow
 import androidx.compose.material.icons.Icons
@@ -68,65 +69,9 @@ fun SearchContent(
         }
     }
     Column(modifier = modifier) {
-        BasicTextField2(
-            state = textState,
-            lineLimits = TextFieldLineLimits.SingleLine,
-            keyboardActions = KeyboardActions(
-                onSend = { onTextChanged(textState.text.toString()) },
-                onSearch = { onTextChanged(textState.text.toString()) },
-                onDone = { onTextChanged(textState.text.toString()) },
-            ),
-            decorator = TextFieldDecorator { innerTextField ->
-                Row(
-                    modifier = Modifier
-                        .background(MaterialTheme.colorScheme.background)
-                        .fillMaxWidth()
-                        .padding(8.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.Search,
-                        contentDescription = "",
-                        tint = MaterialTheme.colorScheme.onBackground,
-                    )
-                    Spacer(Modifier.width(8.dp))
-                    Box(modifier = Modifier.weight(1f)) {
-                        innerTextField()
-                        if (textState.text.isBlank()) {
-                            Text(
-                                text = stringResource(Res.string.searchInputText_hint),
-                                color = MaterialTheme.colorScheme.onBackground,
-                            )
-                        }
-                    }
-                    Spacer(Modifier.width(8.dp))
-                    IconButton(
-                        onClick = {},
-                        colors = IconButtonDefaults.iconButtonColors(),
-                        modifier = Modifier
-                            .alignBy(LastBaseline),
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.Delete,
-                            contentDescription = "delete",
-                            tint = MaterialTheme.colorScheme.onBackground,
-                        )
-                    }
-                }
-            },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp)
-                .border(
-                    border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline),
-                    shape = RoundedCornerShape(4.dp),
-                )
-                .padding(8.dp),
-            textStyle = TextStyle(
-                color = MaterialTheme.colorScheme.onBackground,
-                fontSize = 20.sp,
-            ),
-            cursorBrush = SolidColor(MaterialTheme.colorScheme.onBackground),
+        SearchTextField(
+            textState = textState,
+            onTextChanged = onTextChanged,
         )
         Box(
             modifier = Modifier.fillMaxSize(),
@@ -160,4 +105,73 @@ fun SearchContent(
             }
         }
     }
+}
+
+@OptIn(ExperimentalFoundationApi::class)
+@Composable
+fun SearchTextField(
+    textState: TextFieldState,
+    onTextChanged: (String) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    BasicTextField2(
+        state = textState,
+        lineLimits = TextFieldLineLimits.SingleLine,
+        keyboardActions = KeyboardActions(
+            onSend = { onTextChanged(textState.text.toString()) },
+            onSearch = { onTextChanged(textState.text.toString()) },
+            onDone = { onTextChanged(textState.text.toString()) },
+        ),
+        decorator = TextFieldDecorator { innerTextField ->
+            Row(
+                modifier = Modifier
+                    .background(MaterialTheme.colorScheme.background)
+                    .fillMaxWidth()
+                    .padding(8.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Search,
+                    contentDescription = "",
+                    tint = MaterialTheme.colorScheme.onBackground,
+                )
+                Spacer(Modifier.width(8.dp))
+                Box(modifier = Modifier.weight(1f)) {
+                    innerTextField()
+                    if (textState.text.isBlank()) {
+                        Text(
+                            text = stringResource(Res.string.searchInputText_hint),
+                            color = MaterialTheme.colorScheme.onBackground,
+                        )
+                    }
+                }
+                Spacer(Modifier.width(8.dp))
+                IconButton(
+                    onClick = {},
+                    colors = IconButtonDefaults.iconButtonColors(),
+                    modifier = Modifier
+                        .alignBy(LastBaseline),
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Delete,
+                        contentDescription = "delete",
+                        tint = MaterialTheme.colorScheme.onBackground,
+                    )
+                }
+            }
+        },
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(16.dp)
+            .border(
+                border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline),
+                shape = RoundedCornerShape(4.dp),
+            )
+            .padding(8.dp),
+        textStyle = TextStyle(
+            color = MaterialTheme.colorScheme.onBackground,
+            fontSize = 20.sp,
+        ),
+        cursorBrush = SolidColor(MaterialTheme.colorScheme.onBackground),
+    )
 }
