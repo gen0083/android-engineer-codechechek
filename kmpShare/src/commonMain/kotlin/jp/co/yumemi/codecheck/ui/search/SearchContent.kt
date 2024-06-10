@@ -143,6 +143,10 @@ fun SearchTextField(
                         Text(
                             text = stringResource(Res.string.searchInputText_hint),
                             color = MaterialTheme.colorScheme.onBackground,
+                            style = TextStyle(
+                                color = MaterialTheme.colorScheme.onBackground,
+                                fontSize = 20.sp,
+                            ),
                         )
                     }
                 }
