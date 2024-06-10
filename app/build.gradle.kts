@@ -56,6 +56,9 @@ android {
                 }
             }
         }
+        unitTests {
+            isIncludeAndroidResources = true
+        }
     }
 
     composeCompiler {
@@ -86,6 +89,7 @@ dependencies {
     testImplementation(libs.junit)
     testImplementation(libs.kotestAssertion)
     testImplementation(libs.koinTest)
+    testImplementation(libs.robolectric)
     androidTestImplementation(libs.androidxTextJunit)
     androidTestImplementation(libs.androidxTestEspressoCore)
     androidTestImplementation(libs.kotestAssertion)

@@ -74,6 +74,8 @@ voyagerTransitions = { module = "cafe.adriel.voyager:voyager-transitions", versi
 voyagerKoin = { module = "cafe.adriel.voyager:voyager-koin", version.ref = "voyager" }
 voyagerLifecycleKmp = { module = "cafe.adriel.voyager:voyager-lifecycle-kmp", version.ref = "voyager" }
 
+robolectric = "org.robolectric:robolectric:4.12.2"
+
 [plugins]
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 androidApplication = { id = "com.android.application", version.ref = "androidGradlePlugin" }
