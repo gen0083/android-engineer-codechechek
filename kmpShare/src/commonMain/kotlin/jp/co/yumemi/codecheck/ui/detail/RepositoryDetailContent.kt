@@ -65,7 +65,6 @@ fun RepositoryDetailContent(
         }
         Box(
             modifier = Modifier.fillMaxHeight(),
-            contentAlignment = Alignment.BottomCenter,
         ) {
             Text(text = stringResource(Res.string.search_text, lastSearchDate))
         }
