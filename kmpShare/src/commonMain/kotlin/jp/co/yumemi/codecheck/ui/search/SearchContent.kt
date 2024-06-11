@@ -41,6 +41,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.layout.LastBaseline
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -73,6 +74,7 @@ fun SearchContent(
         SearchTextField(
             textState = textState,
             onTextChanged = onTextChanged,
+            modifier = Modifier.testTag("edit"),
         )
         Box(
             modifier = Modifier.fillMaxSize(),
@@ -99,6 +101,7 @@ fun SearchContent(
                             text = item.name,
                             style = MaterialTheme.typography.bodyLarge,
                             modifier = Modifier
+                                .testTag("result")
                                 .fillMaxWidth()
                                 .clickable { onNavigate(item) },
                         )

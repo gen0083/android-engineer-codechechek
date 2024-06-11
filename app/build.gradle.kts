@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.roborazzi)
 }
 
 android {
@@ -56,6 +57,9 @@ android {
                 }
             }
         }
+        unitTests {
+            isIncludeAndroidResources = true
+        }
     }
 
     composeCompiler {
@@ -86,6 +90,12 @@ dependencies {
     testImplementation(libs.junit)
     testImplementation(libs.kotestAssertion)
     testImplementation(libs.koinTest)
+    testImplementation(libs.robolectric)
+    testImplementation(libs.androidxComposeTest)
+    testImplementation(libs.roborazziCore)
+    testImplementation(libs.roborazziCompose)
+    testImplementation(libs.roborazziJunitRule)
+
     androidTestImplementation(libs.androidxTextJunit)
     androidTestImplementation(libs.androidxTestEspressoCore)
     androidTestImplementation(libs.kotestAssertion)
