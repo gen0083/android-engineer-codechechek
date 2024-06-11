@@ -21,7 +21,7 @@ coil3NetworkKtor = { module = "io.coil-kt.coil3:coil-network-ktor", version.ref 
 desugar = { module = "com.android.tools:desugar_jdk_libs", version = "2.0.4" }
 androidxCoreKtx = { module = "androidx.core:core-ktx", version = "1.6.0" }
 googleMaterial = { module = "com.google.android.material:material", version = "1.12.0" }
-androidxTestEspressoCore = { module = "androidx.test.espresso:espresso-core", version = "3.4.0" }
+androidxTestEspressoCore = { module = "androidx.test.espresso:espresso-core", version = "3.5.1" }
 androidxTextJunit = { module = "androidx.test.ext:junit", version = "1.1.5" }
 junit = { module = "junit:junit", version = "4.13.2" }
 
