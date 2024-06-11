@@ -12,6 +12,10 @@
   "labels": [
     "dependencies"
   ],
+  "ignoreDeps": [
+    "kotlin",
+    "gradle"
+  ],
   "packageRules": [
     {
       "matchUpdateTypes": [
@@ -21,12 +25,6 @@
       ],
       "groupName": "patch version up",
       "automerge": true
-    },
-    {
-      "excludePackageNames": [
-        "kotlin",
-        "gradle"
-      ]
     }
   ]
 }
