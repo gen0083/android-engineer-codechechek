@@ -14,7 +14,9 @@
   ],
   "ignoreDeps": [
     "kotlin",
-    "gradle"
+    "gradle",
+    "com.android.library",
+    "com.android.application"
   ],
   "packageRules": [
     {
