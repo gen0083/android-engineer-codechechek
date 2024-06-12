@@ -24,13 +24,13 @@ class SearchScreen : Screen, KoinComponent {
     @Composable
     override fun Content() {
         val navigator = LocalNavigator.currentOrThrow
+        val textFieldState = rememberTextFieldState(initialText = "")
         val screenModel = rememberScreenModel<SearchScreenModel> {
-            inject<SearchScreenModel>().value
+            val screenModel = inject<SearchScreenModel>().value
+            screenModel.connectTextFieldState(textFieldState)
+            screenModel
         }
         val state by screenModel.state.collectAsState()
-        val textFieldState = rememberTextFieldState(initialText = "")
-
-        screenModel.connectTextFieldState(textFieldState)
 
         Scaffold(
             topBar = {
