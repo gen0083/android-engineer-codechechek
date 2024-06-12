@@ -17,6 +17,7 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
+@OptIn(ExperimentalFoundationApi::class, FlowPreview::class)
 class SearchScreenModel(
     private val searchClient: SearchClient,
 ) : StateScreenModel<SearchScreenModel.State>(State()) {
@@ -27,6 +28,18 @@ class SearchScreenModel(
     )
 
     private var previousQuery: String = ""
+    val textFieldState = TextFieldState(initialText = "")
+
+    init {
+        screenModelScope.launch {
+            textFieldState.textAsFlow()
+                .debounce(1000)
+                .distinctUntilChanged { old, new -> old.toString() == new.toString() }
+                .collectLatest {
+                    searchResults(it.toString())
+                }
+        }
+    }
 
     // 検索結果
     fun searchResults(inputText: String) {
@@ -41,19 +54,6 @@ class SearchScreenModel(
                     isLoading = false,
                 )
             }
-        }
-    }
-
-    @FlowPreview
-    @ExperimentalFoundationApi
-    fun connectTextFieldState(state: TextFieldState) {
-        screenModelScope.launch {
-            state.textAsFlow()
-                .debounce(1000)
-                .distinctUntilChanged { old, new -> old.toString() == new.toString() }
-                .collectLatest {
-                    searchResults(it.toString())
-                }
         }
     }
 }

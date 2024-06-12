@@ -2,7 +2,6 @@ package jp.co.yumemi.codecheck.ui.search
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.text2.input.rememberTextFieldState
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -24,11 +23,8 @@ class SearchScreen : Screen, KoinComponent {
     @Composable
     override fun Content() {
         val navigator = LocalNavigator.currentOrThrow
-        val textFieldState = rememberTextFieldState(initialText = "")
         val screenModel = rememberScreenModel<SearchScreenModel> {
-            val screenModel = inject<SearchScreenModel>().value
-            screenModel.connectTextFieldState(textFieldState)
-            screenModel
+            inject<SearchScreenModel>().value
         }
         val state by screenModel.state.collectAsState()
 
@@ -43,7 +39,7 @@ class SearchScreen : Screen, KoinComponent {
             SearchContent(
                 list = state.list,
                 isLoading = state.isLoading,
-                textState = textFieldState,
+                textState = screenModel.textFieldState,
                 onTextChanged = { screenModel.searchResults(it) },
                 onNavigate = { navigator.push(RepositoryDetailScreen(it)) },
                 modifier = Modifier.padding(paddingValues = it),
