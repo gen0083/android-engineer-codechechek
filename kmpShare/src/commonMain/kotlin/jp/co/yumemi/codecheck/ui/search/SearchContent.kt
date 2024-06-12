@@ -11,21 +11,17 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.text2.input.TextFieldState
-import androidx.compose.foundation.text2.input.textAsFlow
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import jp.co.yumemi.codecheck.api.RepositoryInfo
 import jp.co.yumemi.codecheck.ui.components.SearchTextField
-import kotlinx.coroutines.flow.debounce
-import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -37,13 +33,6 @@ fun SearchContent(
     onNavigate: (RepositoryInfo) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    LaunchedEffect(Unit) {
-        this.launch {
-            textState.textAsFlow().debounce(1000).collect {
-                onTextChanged(it.toString())
-            }
-        }
-    }
     Column(modifier = modifier.imePadding()) {
         SearchTextField(
             textState = textState,

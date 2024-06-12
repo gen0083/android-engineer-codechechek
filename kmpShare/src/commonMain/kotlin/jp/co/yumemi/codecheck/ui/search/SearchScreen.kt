@@ -14,9 +14,11 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import jp.co.yumemi.codecheck.ui.components.MyTopAppBar
 import jp.co.yumemi.codecheck.ui.detail.RepositoryDetailScreen
+import kotlinx.coroutines.FlowPreview
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
+@FlowPreview
 @ExperimentalFoundationApi
 class SearchScreen : Screen, KoinComponent {
     @Composable
@@ -27,6 +29,8 @@ class SearchScreen : Screen, KoinComponent {
         }
         val state by screenModel.state.collectAsState()
         val textFieldState = rememberTextFieldState(initialText = "")
+
+        screenModel.connectTextFieldState(textFieldState)
 
         Scaffold(
             topBar = {
