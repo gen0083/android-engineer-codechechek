@@ -17,8 +17,6 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-@FlowPreview
-@ExperimentalFoundationApi
 class SearchScreenModel(
     private val searchClient: SearchClient,
 ) : StateScreenModel<SearchScreenModel.State>(State()) {
@@ -42,6 +40,8 @@ class SearchScreenModel(
         }
     }
 
+    @FlowPreview
+    @ExperimentalFoundationApi
     fun connectTextFieldState(state: TextFieldState) {
         screenModelScope.launch {
             state.textAsFlow()

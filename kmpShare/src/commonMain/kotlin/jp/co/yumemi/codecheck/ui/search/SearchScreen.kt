@@ -18,9 +18,9 @@ import kotlinx.coroutines.FlowPreview
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-@FlowPreview
-@ExperimentalFoundationApi
 class SearchScreen : Screen, KoinComponent {
+    @FlowPreview
+    @ExperimentalFoundationApi
     @Composable
     override fun Content() {
         val navigator = LocalNavigator.currentOrThrow
