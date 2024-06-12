@@ -103,6 +103,9 @@ android {
         sourceCompatibility = JavaVersion.toVersion(libs.versions.javaVersion.get())
         targetCompatibility = JavaVersion.toVersion(libs.versions.javaVersion.get())
     }
+    buildFeatures {
+        compose = true
+    }
     testOptions.unitTests.isIncludeAndroidResources = true
 
     dependencies {
