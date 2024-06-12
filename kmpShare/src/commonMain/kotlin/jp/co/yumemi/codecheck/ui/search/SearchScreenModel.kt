@@ -34,7 +34,7 @@ class SearchScreenModel(
         screenModelScope.launch {
             textFieldState.textAsFlow()
                 .debounce(1000)
-                .distinctUntilChanged { old, new -> old.toString() == new.toString() }
+                .distinctUntilChanged { old, new -> new.contentEquals(old) }
                 .collectLatest {
                     searchResults(it.toString())
                 }
