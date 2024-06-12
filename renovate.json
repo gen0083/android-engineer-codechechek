@@ -12,6 +12,12 @@
   "labels": [
     "dependencies"
   ],
+  "ignoreDeps": [
+    "kotlin",
+    "gradle",
+    "com.android.library",
+    "com.android.application"
+  ],
   "packageRules": [
     {
       "matchUpdateTypes": [
@@ -21,12 +27,6 @@
       ],
       "groupName": "patch version up",
       "automerge": true
-    },
-    {
-      "excludePackageNames": [
-        "kotlin",
-        "gradle"
-      ]
     }
   ]
 }
