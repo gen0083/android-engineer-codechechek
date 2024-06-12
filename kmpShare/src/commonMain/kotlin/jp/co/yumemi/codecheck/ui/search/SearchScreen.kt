@@ -1,6 +1,8 @@
 package jp.co.yumemi.codecheck.ui.search
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text2.input.rememberTextFieldState
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -15,6 +17,7 @@ import jp.co.yumemi.codecheck.ui.detail.RepositoryDetailScreen
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
+@ExperimentalFoundationApi
 class SearchScreen : Screen, KoinComponent {
     @Composable
     override fun Content() {
@@ -23,6 +26,7 @@ class SearchScreen : Screen, KoinComponent {
             inject<SearchScreenModel>().value
         }
         val state by screenModel.state.collectAsState()
+        val textFieldState = rememberTextFieldState(initialText = "")
 
         Scaffold(
             topBar = {
@@ -35,6 +39,7 @@ class SearchScreen : Screen, KoinComponent {
             SearchContent(
                 list = state.list,
                 isLoading = state.isLoading,
+                textState = textFieldState,
                 onTextChanged = { screenModel.searchResults(it) },
                 onNavigate = { navigator.push(RepositoryDetailScreen(it)) },
                 modifier = Modifier.padding(paddingValues = it),

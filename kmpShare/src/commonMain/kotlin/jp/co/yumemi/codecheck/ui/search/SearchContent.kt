@@ -10,7 +10,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.text2.input.rememberTextFieldState
+import androidx.compose.foundation.text2.input.TextFieldState
 import androidx.compose.foundation.text2.input.textAsFlow
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.HorizontalDivider
@@ -32,11 +32,11 @@ import kotlinx.coroutines.launch
 fun SearchContent(
     list: List<RepositoryInfo>,
     isLoading: Boolean,
+    textState: TextFieldState,
     onTextChanged: (String) -> Unit,
     onNavigate: (RepositoryInfo) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val textState = rememberTextFieldState("")
     LaunchedEffect(Unit) {
         this.launch {
             textState.textAsFlow().debounce(1000).collect {
