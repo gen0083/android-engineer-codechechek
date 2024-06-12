@@ -26,9 +26,13 @@ class SearchScreenModel(
         val isLoading: Boolean = false,
     )
 
+    private var previousQuery: String = ""
+
     // 検索結果
     fun searchResults(inputText: String) {
+        if (previousQuery == inputText) return
         if (inputText.isBlank()) return
+        previousQuery = inputText
         screenModelScope.launch {
             mutableState.update { it.copy(isLoading = true) }
             mutableState.update {
