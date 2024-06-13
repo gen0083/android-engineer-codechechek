@@ -7,6 +7,7 @@ import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onRoot
+import androidx.compose.ui.test.performImeAction
 import androidx.compose.ui.test.performTextInput
 import androidx.compose.ui.test.printToLog
 import com.github.takahirom.roborazzi.captureRoboImage
@@ -49,7 +50,11 @@ class ComposeTestSample {
         // テキスト入力しただけでrecompositionは発生しない
         composeRule.onNodeWithTag("edit")
             .performTextInput("gen0083")
-        // composeRuleでなにかするとrecompositionが起こる
+        // テキスト入力から一定時間経ったら検索がトリガーされる、という処理はどうやってテストすればいいかわからなかった
+        // SearchTextFieldにImeActionを登録してからperformImeActionを送ることで検索がトリガーされるようになった
+        composeRule.onNodeWithTag("edit")
+            .performImeAction()
+        // composeRuleでなにかするとrecompositionが起こる? この辺イマイチ理解していない・・・
         // https://developer.android.com/develop/ui/compose/testing/synchronization
         composeRule.waitUntilAtLeastOneExists(
             hasTestTag("result"),

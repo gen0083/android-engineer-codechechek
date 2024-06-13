@@ -1,12 +1,11 @@
 package jp.co.yumemi.android.codecheck.ui
 
-import androidx.compose.ui.input.key.Key
 import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
-import androidx.compose.ui.test.performKeyInput
+import androidx.compose.ui.test.performImeAction
 import androidx.compose.ui.test.performTextInput
 import jp.co.yumemi.codecheck.App
 import kotlinx.coroutines.test.runTest
@@ -41,7 +40,7 @@ class ComposeTestSample {
         composeRule.onNodeWithTag("edit")
             .performTextInput("gen0083")
         composeRule.onNodeWithTag("edit")
-            .performKeyInput { keyDown(Key.Search) }
+            .performImeAction()
         composeRule.waitUntilAtLeastOneExists(hasTestTag("result"), 3000)
         composeRule.onNode(hasText("gen0083/textlint-myrule"))
             .assertExists()
