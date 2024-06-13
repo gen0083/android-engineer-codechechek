@@ -29,14 +29,14 @@ fun SearchContent(
     list: List<RepositoryInfo>,
     isLoading: Boolean,
     textState: TextFieldState,
-    onTextChanged: (String) -> Unit,
+    onTriggerSearch: (String) -> Unit,
     onNavigate: (RepositoryInfo) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(modifier = modifier.imePadding()) {
         SearchTextField(
             textState = textState,
-            onTextChanged = onTextChanged,
+            onTriggerSearch = onTriggerSearch,
             modifier = Modifier.testTag("edit"),
         )
         Box(

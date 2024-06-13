@@ -41,16 +41,16 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 fun SearchTextField(
     textState: TextFieldState,
-    onTextChanged: (String) -> Unit,
+    onTriggerSearch: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     BasicTextField2(
         state = textState,
         lineLimits = TextFieldLineLimits.SingleLine,
         keyboardActions = KeyboardActions(
-            onSend = { onTextChanged(textState.text.toString()) },
-            onSearch = { onTextChanged(textState.text.toString()) },
-            onDone = { onTextChanged(textState.text.toString()) },
+            onSend = { onTriggerSearch(textState.text.toString()) },
+            onSearch = { onTriggerSearch(textState.text.toString()) },
+            onDone = { onTriggerSearch(textState.text.toString()) },
         ),
         decorator = TextFieldDecorator { innerTextField ->
             Row(
