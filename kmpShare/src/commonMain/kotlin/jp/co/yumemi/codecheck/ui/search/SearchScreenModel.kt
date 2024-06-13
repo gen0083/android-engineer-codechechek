@@ -36,13 +36,13 @@ class SearchScreenModel(
                 .debounce(1000)
                 .distinctUntilChanged { old, new -> new.contentEquals(old) }
                 .collectLatest {
-                    searchResults(it.toString())
+                    searchRepository(it.toString())
                 }
         }
     }
 
     // 検索結果
-    fun searchResults(inputText: String) {
+    fun searchRepository(inputText: String) {
         if (previousQuery == inputText) return
         if (inputText.isBlank()) return
         previousQuery = inputText

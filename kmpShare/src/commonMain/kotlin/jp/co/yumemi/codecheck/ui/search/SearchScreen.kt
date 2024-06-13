@@ -40,7 +40,7 @@ class SearchScreen : Screen, KoinComponent {
                 list = state.list,
                 isLoading = state.isLoading,
                 textState = screenModel.textFieldState,
-                onTriggerSearch = { screenModel.searchResults(it) },
+                onTriggerSearch = { screenModel.searchRepository(it) },
                 onNavigate = { navigator.push(RepositoryDetailScreen(it)) },
                 modifier = Modifier.padding(paddingValues = it),
             )
