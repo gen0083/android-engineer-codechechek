@@ -13,8 +13,11 @@ coil3 = "3.0.0-alpha06"
 roborazzi = "1.20.0"
 
 [libraries]
+coil3Core = { module = "io.coil-kt.coil3:coil-core", version.ref = "coil3" }
 coil3ComposeCore = { module = "io.coil-kt.coil3:coil-compose-core", version.ref = "coil3" }
+coil3ComposeAndroid = { module = "io.coil-kt.coil3:coil-compose-android", version.ref = "coil3" }
 coil3NetworkKtor = { module = "io.coil-kt.coil3:coil-network-ktor", version.ref = "coil3" }
+coil3Test = { module = "io.coil-kt.coil3:coil-test", version.ref = "coil3" }
 
 desugar = { module = "com.android.tools:desugar_jdk_libs", version = "2.0.4" }
 androidxCoreKtx = { module = "androidx.core:core-ktx", version = "1.13.1" }
