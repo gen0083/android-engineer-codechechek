@@ -56,6 +56,9 @@ kotlin {
 
             implementation(libs.koinCore)
 
+            implementation(libs.coil3)
+            implementation(libs.coil3Compose)
+            implementation(libs.coil3Core)
             implementation(libs.coil3ComposeCore)
             implementation(libs.coil3NetworkKtor)
 
@@ -69,6 +72,7 @@ kotlin {
 
             implementation(libs.koinTest)
             implementation(libs.kotlinxCoroutineTest)
+            implementation(libs.coil3Test)
         }
         androidMain.dependencies {
             implementation(libs.kotlinxCoroutineAndroid)
@@ -76,6 +80,7 @@ kotlin {
 
             implementation(libs.koinAndroid)
             implementation(libs.voyagerKoin)
+            implementation(libs.coil3ComposeAndroid)
         }
         jsMain.dependencies {
             implementation(libs.ktorCoreJs)
@@ -102,6 +107,9 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.toVersion(libs.versions.javaVersion.get())
         targetCompatibility = JavaVersion.toVersion(libs.versions.javaVersion.get())
+    }
+    buildFeatures {
+        compose = true
     }
     testOptions.unitTests.isIncludeAndroidResources = true
 

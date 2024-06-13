@@ -94,7 +94,7 @@ fun SearchTextField(
                     ) {
                         Icon(
                             imageVector = Icons.Default.Clear,
-                            contentDescription = "delete",
+                            contentDescription = "clear",
                             tint = MaterialTheme.colorScheme.onBackground,
                         )
                     }

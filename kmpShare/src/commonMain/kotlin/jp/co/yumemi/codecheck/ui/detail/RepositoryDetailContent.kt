@@ -12,7 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import coil3.ImageLoader
+import coil3.SingletonImageLoader
 import coil3.compose.AsyncImage
 import coil3.compose.LocalPlatformContext
 import coil3.request.ImageRequest
@@ -43,7 +43,7 @@ fun RepositoryDetailContent(
                 .data(info.owner.ownerIconUrl)
                 .build(),
             contentDescription = info.name,
-            imageLoader = ImageLoader(LocalPlatformContext.current),
+            imageLoader = SingletonImageLoader.get(LocalPlatformContext.current),
         )
         Text(text = info.name)
         Row(
