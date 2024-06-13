@@ -56,6 +56,8 @@ kotlin {
 
             implementation(libs.koinCore)
 
+            implementation(libs.coil3)
+            implementation(libs.coil3Compose)
             implementation(libs.coil3Core)
             implementation(libs.coil3ComposeCore)
             implementation(libs.coil3NetworkKtor)

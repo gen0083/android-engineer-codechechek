@@ -13,6 +13,8 @@ coil3 = "3.0.0-alpha06"
 roborazzi = "1.20.0"
 
 [libraries]
+coil3 = { module = "io.coil-kt.coil3:coil", version.ref = "coil3" }
+coil3Compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil3" }
 coil3Core = { module = "io.coil-kt.coil3:coil-core", version.ref = "coil3" }
 coil3ComposeCore = { module = "io.coil-kt.coil3:coil-compose-core", version.ref = "coil3" }
 coil3ComposeAndroid = { module = "io.coil-kt.coil3:coil-compose-android", version.ref = "coil3" }
