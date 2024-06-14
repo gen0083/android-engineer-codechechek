@@ -60,11 +60,11 @@ koinAnnotation = { module = "io.insert-koin:koin-annotations", version.ref = "ko
 koinKspCompiler = { module = "io.insert-koin:koin-ksp-compiler", version.ref = "koinAnnotation" }
 # compose
 androidxComposeMaterial = { module = "androidx.compose.material3:material3", version = "1.2.1" }
-androidxComposeFoundation = { module = "androidx.compose.foundation:foundation", version = "1.6.7" }
-androidxComposeToolingPreview = { module = "androidx.compose.ui:ui-tooling-preview", version = "1.6.7" }
-androidxComposeTooling = { module = "androidx.compose.ui:ui-tooling", version = "1.6.7" }
-androidxComposeTest = { module = "androidx.compose.ui:ui-test-junit4", version = "1.6.7" }
-androidxComposeManifest = { module = "androidx.compose.ui:ui-test-manifest", version = "1.6.7" }
+androidxComposeFoundation = { module = "androidx.compose.foundation:foundation", version = "1.6.8" }
+androidxComposeToolingPreview = { module = "androidx.compose.ui:ui-tooling-preview", version = "1.6.8" }
+androidxComposeTooling = { module = "androidx.compose.ui:ui-tooling", version = "1.6.8" }
+androidxComposeTest = { module = "androidx.compose.ui:ui-test-junit4", version = "1.6.8" }
+androidxComposeManifest = { module = "androidx.compose.ui:ui-test-manifest", version = "1.6.8" }
 androidxActivityCompose = { module = "androidx.activity:activity-compose", version = "1.9.0" }
 androidxFragmentCompose = { module = "androidx.fragment:fragment-compose", version = "1.7.1" }
 # Voyager
