@@ -145,6 +145,6 @@ jobs:
               # Comment out for demonstration purpose
               echo "Deleting $branch"
 
-              # git push origin --delete "$branch"
+              git push origin --delete "$branch"
             fi
           done
