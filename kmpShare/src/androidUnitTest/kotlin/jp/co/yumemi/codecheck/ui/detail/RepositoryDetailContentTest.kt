@@ -49,11 +49,14 @@ class RepositoryDetailContentTest {
             AppTheme {
                 RepositoryDetailContent(
                     info = RepositoryInfo(
-                        name = "default/some",
+                        name = "some",
+                        fullName = "default/some",
                         owner = RepositoryOwner(
+                            ownerName = "test",
                             ownerIconUrl = "https://avatars.githubusercontent.com/u/7608725?v=4",
                         ),
                         language = "kotlin",
+                        description = "kotlin sample",
                         stargazersCount = 10,
                         watchersCount = 1,
                         forksCount = 100,

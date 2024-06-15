@@ -53,8 +53,10 @@ class SearchContentTest {
                     list = listOf(
                         RepositoryInfo(
                             name = "aaa",
-                            owner = RepositoryOwner(""),
+                            fullName = "aaa/aaa",
+                            owner = RepositoryOwner("", ""),
                             language = null,
+                            description = "aaaaaa",
                             stargazersCount = 1,
                             watchersCount = 2,
                             forksCount = 3,
@@ -62,8 +64,10 @@ class SearchContentTest {
                         ),
                         RepositoryInfo(
                             name = "bbb",
-                            owner = RepositoryOwner(""),
+                            fullName = "bbb/bbb",
+                            owner = RepositoryOwner("", ""),
                             language = null,
+                            description = null,
                             stargazersCount = 1,
                             watchersCount = 2,
                             forksCount = 3,
