@@ -65,6 +65,7 @@ kotlin {
             // voyager
             implementation(libs.voyagerNavigator)
             implementation(libs.voyagerScreenModel)
+            implementation(libs.voyagerBottomSheetNavigator)
         }
         commonTest.dependencies {
             implementation(libs.kotlinTest)
