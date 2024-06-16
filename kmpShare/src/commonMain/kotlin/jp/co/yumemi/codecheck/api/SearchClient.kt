@@ -28,4 +28,12 @@ class SearchClient(
 
         return jsonResponse.items
     }
+
+    suspend fun searchRepositoriesByUser(username: String): List<RepositoryInfo> {
+        val response = client.get("https://api.github.com/users/$username/repos") {
+            header("Accept", "application/vnd.github.v3+json")
+        }
+        val jsonResponse = json.decodeFromString<List<RepositoryInfo>>(response.body())
+        return jsonResponse
+    }
 }
