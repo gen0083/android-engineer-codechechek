@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -30,6 +31,7 @@ import org.jetbrains.compose.resources.stringResource
 fun RepositoryDetailContent(
     info: RepositoryInfo,
     lastSearchDate: String,
+    onNavigate: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(
@@ -62,6 +64,11 @@ fun RepositoryDetailContent(
                 Text(text = stringResource(Res.string.count_forks, info.forksCount))
                 Text(text = stringResource(Res.string.count_open_issues, info.openIssuesCount))
             }
+        }
+        Button(
+            onClick = { onNavigate(info.owner.ownerName) },
+        ) {
+            Text(text = "open")
         }
         Box(
             modifier = Modifier.fillMaxHeight(),

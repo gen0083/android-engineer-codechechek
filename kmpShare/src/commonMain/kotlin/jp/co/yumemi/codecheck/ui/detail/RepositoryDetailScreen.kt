@@ -7,6 +7,7 @@ import androidx.compose.ui.Modifier
 import cafe.adriel.voyager.core.model.rememberScreenModel
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.bottomSheet.LocalBottomSheetNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import jp.co.yumemi.codecheck.api.RepositoryInfo
 import jp.co.yumemi.codecheck.ui.components.MyTopAppBar
@@ -23,6 +24,7 @@ data class RepositoryDetailScreen(
                 inject<RepositoryDetailScreenModel>().value
             }
         val navigator = LocalNavigator.currentOrThrow
+        val bottomNavigator = LocalBottomSheetNavigator.current
 
         Scaffold(
             topBar = {
@@ -35,6 +37,7 @@ data class RepositoryDetailScreen(
             RepositoryDetailContent(
                 info = info,
                 lastSearchDate = screenModel.getLastSearchTime(),
+                onNavigate = { bottomNavigator.show(RepositoryListScreen(info.name)) },
                 modifier = Modifier.padding(it),
             )
         }
