@@ -1,7 +1,9 @@
 package jp.co.yumemi.codecheck
 
+import androidx.compose.foundation.shape.CutCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.navigator.bottomSheet.BottomSheetNavigator
 import jp.co.yumemi.codecheck.di.networkModule
@@ -22,7 +24,8 @@ fun App() {
     AppTheme {
         BottomSheetNavigator(
             hideOnBackPress = true,
-            sheetShape = MaterialTheme.shapes.extraLarge,
+            sheetShape = CutCornerShape(topStart = 20.dp, topEnd = 20.dp),
+            scrimColor = MaterialTheme.colorScheme.scrim,
         ) {
             Navigator(SearchScreen())
         }
