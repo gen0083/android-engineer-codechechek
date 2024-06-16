@@ -1,5 +1,6 @@
 package jp.co.yumemi.codecheck
 
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.navigator.bottomSheet.BottomSheetNavigator
@@ -19,7 +20,10 @@ val koin = startKoin {
 @Composable
 fun App() {
     AppTheme {
-        BottomSheetNavigator {
+        BottomSheetNavigator(
+            hideOnBackPress = true,
+            sheetShape = MaterialTheme.shapes.extraLarge,
+        ) {
             Navigator(SearchScreen())
         }
     }
