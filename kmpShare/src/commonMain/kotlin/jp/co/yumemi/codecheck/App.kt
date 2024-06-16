@@ -2,6 +2,7 @@ package jp.co.yumemi.codecheck
 
 import androidx.compose.runtime.Composable
 import cafe.adriel.voyager.navigator.Navigator
+import cafe.adriel.voyager.navigator.bottomSheet.BottomSheetNavigator
 import jp.co.yumemi.codecheck.di.networkModule
 import jp.co.yumemi.codecheck.di.screenModelModule
 import jp.co.yumemi.codecheck.ui.search.SearchScreen
@@ -18,6 +19,8 @@ val koin = startKoin {
 @Composable
 fun App() {
     AppTheme {
-        Navigator(SearchScreen())
+        BottomSheetNavigator {
+            Navigator(SearchScreen())
+        }
     }
 }
