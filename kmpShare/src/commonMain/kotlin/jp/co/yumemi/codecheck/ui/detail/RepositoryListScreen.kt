@@ -1,5 +1,6 @@
 package jp.co.yumemi.codecheck.ui.detail
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBarsPadding
@@ -20,7 +21,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import cafe.adriel.voyager.core.model.rememberScreenModel
+import cafe.adriel.voyager.core.model.rememberNavigatorScreenModel
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.bottomSheet.LocalBottomSheetNavigator
@@ -37,7 +38,7 @@ data class RepositoryListScreen(
     override fun Content() {
         val navigator = LocalNavigator.currentOrThrow
         val bottomNavigator = LocalBottomSheetNavigator.current
-        val screenModel = rememberScreenModel(tag = userName) {
+        val screenModel = navigator.rememberNavigatorScreenModel(tag = userName) {
             inject<RepositoryListScreenModel> { parametersOf(userName) }.value
         }
         val state by screenModel.state.collectAsState()
@@ -73,7 +74,11 @@ data class RepositoryListScreen(
                             key = { current.repositories[it].hashCode() },
                         ) {
                             val item = current.repositories[it]
-                            Text(text = item.fullName)
+                            Text(
+                                text = item.name,
+                                modifier = Modifier.fillMaxWidth()
+                                    .clickable { navigator.replace(RepositoryDetailScreen(item)) },
+                            )
                         }
                     }
                 }
