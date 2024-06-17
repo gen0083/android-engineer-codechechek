@@ -39,6 +39,7 @@ data class RepositoryDetailScreen(
                 lastSearchDate = screenModel.getLastSearchTime(),
                 onNavigate = { bottomNavigator.show(RepositoryListScreen(info.owner.ownerName)) },
                 modifier = Modifier.padding(it),
+                debug = navigator.items,
             )
         }
     }
