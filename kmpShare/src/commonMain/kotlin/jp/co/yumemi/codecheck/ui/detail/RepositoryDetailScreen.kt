@@ -20,7 +20,7 @@ data class RepositoryDetailScreen(
     @Composable
     override fun Content() {
         val screenModel: RepositoryDetailScreenModel =
-            rememberScreenModel<RepositoryDetailScreenModel> {
+            rememberScreenModel<RepositoryDetailScreenModel>(tag = info.owner.ownerName) {
                 inject<RepositoryDetailScreenModel>().value
             }
         val navigator = LocalNavigator.currentOrThrow
