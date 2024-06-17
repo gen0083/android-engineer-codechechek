@@ -77,7 +77,9 @@ data class RepositoryListScreen(
                             Text(
                                 text = item.name,
                                 modifier = Modifier.fillMaxWidth()
-                                    .clickable { navigator.replace(RepositoryDetailScreen(item)) },
+                                    .clickable {
+                                        navigator.push(RepositoryDetailScreen(item))
+                                    },
                             )
                         }
                     }
