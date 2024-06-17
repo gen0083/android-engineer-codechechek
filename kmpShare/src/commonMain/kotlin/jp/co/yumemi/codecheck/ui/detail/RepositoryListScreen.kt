@@ -20,7 +20,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import cafe.adriel.voyager.core.model.rememberNavigatorScreenModel
+import cafe.adriel.voyager.core.model.rememberScreenModel
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.bottomSheet.LocalBottomSheetNavigator
@@ -37,7 +37,7 @@ data class RepositoryListScreen(
     override fun Content() {
         val navigator = LocalNavigator.currentOrThrow
         val bottomNavigator = LocalBottomSheetNavigator.current
-        val screenModel = navigator.rememberNavigatorScreenModel {
+        val screenModel = rememberScreenModel(tag = userName) {
             inject<RepositoryListScreenModel> { parametersOf(userName) }.value
         }
         val state by screenModel.state.collectAsState()
@@ -65,6 +65,9 @@ data class RepositoryListScreen(
 
                 is RepositoryListScreenModel.State.Success -> {
                     LazyColumn {
+                        item {
+                            Text(text = "$userName with ${screenModel.hashCode()}")
+                        }
                         items(
                             current.repositories.size,
                             key = { current.repositories[it].hashCode() },
@@ -76,6 +79,7 @@ data class RepositoryListScreen(
                 }
 
                 is RepositoryListScreenModel.State.Error -> {
+                    Text(text = "$userName with ${screenModel.hashCode()}")
                     Text(text = "Error: ${current.throwable}")
                     Button(onClick = { screenModel.load() }) {
                         Text(text = "retry")
