@@ -1,6 +1,7 @@
 package jp.co.yumemi.codecheck
 
 import androidx.compose.foundation.shape.CutCornerShape
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
@@ -19,6 +20,7 @@ val koin = startKoin {
     )
 }
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun App() {
     AppTheme {
