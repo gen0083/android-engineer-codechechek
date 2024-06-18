@@ -43,7 +43,6 @@ kotlin {
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.ui)
-            implementation(compose.material)
             implementation(compose.material3)
             implementation(compose.foundation)
             implementation(compose.components.resources)
@@ -89,6 +88,7 @@ kotlin {
             implementation(libs.kotlinxCoroutineCoreJs)
         }
         wasmJsMain.dependencies {
+            implementation(compose.material)
             implementation(libs.ktorClientJsWasmJs)
         }
     }
