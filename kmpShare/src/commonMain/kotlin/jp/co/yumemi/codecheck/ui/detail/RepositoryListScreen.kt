@@ -26,12 +26,14 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.bottomSheet.LocalBottomSheetNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
+import jp.co.yumemi.codecheck.api.RepositoryInfo
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.koin.core.parameter.parametersOf
 
 data class RepositoryListScreen(
     val userName: String,
+    val onNavigate: (RepositoryInfo) -> Unit,
 ) : Screen, KoinComponent {
     @ExperimentalMaterial3Api
     @Composable
@@ -78,7 +80,8 @@ data class RepositoryListScreen(
                                 text = item.name,
                                 modifier = Modifier.fillMaxWidth()
                                     .clickable {
-                                        navigator.push(RepositoryDetailScreen(item))
+                                        onNavigate(item)
+                                        bottomNavigator.hide()
                                     },
                             )
                         }
