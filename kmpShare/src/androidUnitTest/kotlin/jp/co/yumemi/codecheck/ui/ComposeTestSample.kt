@@ -76,7 +76,7 @@ class ComposeTestSample {
             // キャプチャを取る→すでに画像が存在している場合、画像に変化がある場合にテストに失敗する
             composeRule.onRoot()
                 .captureRoboImage()
-            composeRule.onNode(hasText("gen0083/textlint-myrule"))
+            composeRule.onNode(hasText("textlint-myrule"))
                 .assertExists()
         }
     }

@@ -26,4 +26,13 @@ class SearchClientTest : KoinTest {
         val actual = client.searchRepository("asdfghjkkkjlkjlkjiouore")
         actual.size shouldBe 0
     }
+
+    @Test
+    fun search_by_user_success() = runTest {
+        val actual = client.searchRepositoriesByUser("gen0083")
+        actual.forEach {
+            println(it)
+        }
+        actual.size shouldBe 19
+    }
 }

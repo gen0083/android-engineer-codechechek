@@ -49,22 +49,26 @@ class RepositoryDetailContentTest {
             AppTheme {
                 RepositoryDetailContent(
                     info = RepositoryInfo(
-                        name = "default/some",
+                        name = "some",
+                        fullName = "default/some",
                         owner = RepositoryOwner(
+                            ownerName = "test",
                             ownerIconUrl = "https://avatars.githubusercontent.com/u/7608725?v=4",
                         ),
                         language = "kotlin",
+                        description = "kotlin sample",
                         stargazersCount = 10,
                         watchersCount = 1,
                         forksCount = 100,
                         openIssuesCount = 1111,
                     ),
                     lastSearchDate = "検索日: 2024年1月1日 01:02:03",
+                    onShowBottomSheet = {},
                     modifier = Modifier.background(androidx.compose.ui.graphics.Color.White),
                 )
             }
         }
-        composeRule.onNodeWithText(text = "default", substring = true)
+        composeRule.onNodeWithText(text = "some", substring = true)
             .assertExists()
         composeRule.onRoot().captureRoboImage()
     }

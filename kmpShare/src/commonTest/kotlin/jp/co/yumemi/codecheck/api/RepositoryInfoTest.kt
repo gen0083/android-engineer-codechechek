@@ -142,9 +142,12 @@ class RepositoryInfoTest : KoinTest {
 
         val actual = json.decodeFromString<RepositoryInfo>(str)
 
-        actual.name shouldBe "gen0083/textlint-myrule"
+        actual.name shouldBe "textlint-myrule"
+        actual.fullName shouldBe "gen0083/textlint-myrule"
+        actual.owner.ownerName shouldBe "gen0083"
         actual.owner.ownerIconUrl shouldBe "https://avatars.githubusercontent.com/u/7608725?v=4"
         actual.language shouldBe "JavaScript"
+        actual.description shouldBe "textlint rules for gen0083"
         actual.stargazersCount shouldBe 0
         actual.watchersCount shouldBe 0
         actual.forksCount shouldBe 0

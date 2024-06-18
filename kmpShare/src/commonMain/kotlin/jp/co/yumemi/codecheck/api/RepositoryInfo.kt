@@ -5,9 +5,14 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class RepositoryInfo(
-    @SerialName("full_name")
+    @SerialName("name")
     val name: String,
+    @SerialName("full_name")
+    val fullName: String,
+    @SerialName("owner")
     val owner: RepositoryOwner,
+    @SerialName("description")
+    val description: String? = null,
     @SerialName("language")
     val language: String? = "unknown",
     @SerialName("stargazers_count")
@@ -22,6 +27,8 @@ data class RepositoryInfo(
 
 @Serializable
 data class RepositoryOwner(
+    @SerialName("login")
+    val ownerName: String,
     @SerialName("avatar_url")
     val ownerIconUrl: String,
 )
