@@ -88,7 +88,7 @@ kotlin {
             implementation(libs.kotlinxCoroutineCoreJs)
         }
         wasmJsMain.dependencies {
-            implementation(compose.material)
+            runtimeOnly(compose.material)
             implementation(libs.ktorClientJsWasmJs)
         }
     }
