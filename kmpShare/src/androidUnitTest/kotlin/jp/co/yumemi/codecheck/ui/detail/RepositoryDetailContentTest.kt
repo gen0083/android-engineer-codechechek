@@ -63,11 +63,12 @@ class RepositoryDetailContentTest {
                         openIssuesCount = 1111,
                     ),
                     lastSearchDate = "検索日: 2024年1月1日 01:02:03",
+                    onShowBottomSheet = {},
                     modifier = Modifier.background(androidx.compose.ui.graphics.Color.White),
                 )
             }
         }
-        composeRule.onNodeWithText(text = "default", substring = true)
+        composeRule.onNodeWithText(text = "some", substring = true)
             .assertExists()
         composeRule.onRoot().captureRoboImage()
     }

@@ -33,7 +33,7 @@ import org.jetbrains.compose.resources.stringResource
 fun RepositoryDetailContent(
     info: RepositoryInfo,
     lastSearchDate: String,
-    onNavigate: (String) -> Unit,
+    onShowBottomSheet: (String) -> Unit,
     modifier: Modifier = Modifier,
     debug: List<Screen>? = null,
 ) {
@@ -78,7 +78,7 @@ fun RepositoryDetailContent(
             }
             item {
                 Button(
-                    onClick = { onNavigate(info.owner.ownerName) },
+                    onClick = { onShowBottomSheet(info.owner.ownerName) },
                 ) {
                     Text(text = "open")
                 }
