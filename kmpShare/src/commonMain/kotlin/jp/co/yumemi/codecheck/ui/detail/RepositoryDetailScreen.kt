@@ -37,7 +37,7 @@ data class RepositoryDetailScreen(
             RepositoryDetailContent(
                 info = info,
                 lastSearchDate = screenModel.getLastSearchTime(),
-                onNavigate = {
+                onShowBottomSheet = {
                     bottomNavigator.show(
                         RepositoryListScreen(
                             info.owner.ownerName,

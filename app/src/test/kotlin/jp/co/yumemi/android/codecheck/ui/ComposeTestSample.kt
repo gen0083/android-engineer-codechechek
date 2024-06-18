@@ -42,7 +42,7 @@ class ComposeTestSample {
         composeRule.onNodeWithTag("edit")
             .performImeAction()
         composeRule.waitUntilAtLeastOneExists(hasTestTag("result"), 3000)
-        composeRule.onNode(hasText("gen0083/textlint-myrule"))
+        composeRule.onNode(hasText("textlint-myrule"))
             .assertExists()
     }
 }
