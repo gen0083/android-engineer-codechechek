@@ -128,6 +128,9 @@ jobs:
       pull-requests: write # for creating a comment on pull requests
 
     steps:
+      - name: "Store main branch screenshot"
+        uses: ./.github/workflows/store_screenshot.yml
+
       - uses: actions/checkout@v4
         name: checkout branch
 
@@ -141,9 +144,6 @@ jobs:
         uses: gradle/actions/setup-gradle@v3
         with:
           gradle-version: wrapper
-
-      - name: "Store main branch screenshot"
-        uses: ./.github/workflows/store_screenshot.yml
 
       - uses: dawidd6/action-download-artifact@v6
         name: "download main screenshot"
