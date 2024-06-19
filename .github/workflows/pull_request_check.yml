@@ -131,7 +131,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          refs: 'main'
+          ref: 'main'
 
       - uses: actions/setup-java@v4
         name: Setup Java
@@ -153,7 +153,7 @@ jobs:
       - uses: actions/checkout@v4
         name: checkout branch
         with:
-          refs: ${{ github.event.workflow_run.head_branch }}
+          ref: ${{ github.event.workflow_run.head_branch }}
 
       - name: "Compare screenshot"
         run: |
