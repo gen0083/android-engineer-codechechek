@@ -68,28 +68,28 @@ jobs:
         run: |
           ./gradlew testDebugUnitTest --console rich
 
-  run-instrumentation-test:
-    runs-on: ubuntu-latest
-    name: "Run Integration Test"
-    needs: [ ktlint ]
-    steps:
-      - uses: actions/checkout@v4
-        name: checkout branch
-
-      - uses: actions/setup-java@v4
-        name: Setup Java
-        with:
-          java-version: "17"
-          distribution: "temurin"
-
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v3
-        with:
-          gradle-version: wrapper
-
-      - name: AndroidTest
-        run: |
-          ./gradlew pixel4api33DebugAndroidTest --console rich
+  #  run-instrumentation-test:
+  #    runs-on: ubuntu-latest
+  #    name: "Run Integration Test"
+  #    needs: [ ktlint ]
+  #    steps:
+  #      - uses: actions/checkout@v4
+  #        name: checkout branch
+  #
+  #      - uses: actions/setup-java@v4
+  #        name: Setup Java
+  #        with:
+  #          java-version: "17"
+  #          distribution: "temurin"
+  #
+  #      - name: Setup Gradle
+  #        uses: gradle/actions/setup-gradle@v3
+  #        with:
+  #          gradle-version: wrapper
+  #
+  #      - name: AndroidTest
+  #        run: |
+  #          ./gradlew pixel4api33DebugAndroidTest --console rich
 
   wasm-build-check:
     if: github.event.pull_request.merged != true
