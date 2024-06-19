@@ -1,0 +1,254 @@
+name: "checking pull request"
+on:
+  pull_request:
+
+jobs:
+  #  setup-environment:
+  #    runs-on: ubuntu-latest
+  #    name: "Setup environment"
+  #    steps:
+  #      - uses: actions/checkout@v4
+  #        name: checkout branch
+  #
+  #      - uses: actions/setup-java@v4
+  #        name: Setup Java
+  #        with:
+  #          java-version: "17"
+  #          distribution: "temurin"
+  #
+  #      - name: Setup Gradle
+  #        uses: gradle/actions/setup-gradle@v3
+  #        with:
+  #          gradle-version: wrapper
+
+  ktlint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        name: checkout branch
+
+      - uses: actions/setup-java@v4
+        name: Setup Java
+        with:
+          java-version: "17"
+          distribution: "temurin"
+
+      - name: "Ktint set up"
+        shell: bash
+        run: |
+          curl -sSLO https://github.com/pinterest/ktlint/releases/download/0.50.0/ktlint &&
+          chmod a+x ktlint && 
+          sudo mv ktlint /usr/local/bin/
+
+      - name: "run ktlint"
+        shell: bash
+        run: |
+          ktlint '*/src/**/*.kt' '!*/src/*Test/*' '!*/src/*test/*' '!*/src/test/*'
+
+  run-unit-test:
+    runs-on: ubuntu-latest
+    name: "Run Unit Test"
+    needs: [ ktlint ]
+    steps:
+      - uses: actions/checkout@v4
+        name: checkout branch
+
+      - uses: actions/setup-java@v4
+        name: Setup Java
+        with:
+          java-version: "17"
+          distribution: "temurin"
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: wrapper
+
+      - name: DebugUnitTest
+        run: |
+          ./gradlew testDebugUnitTest --console rich
+
+  run-instrumentation-test:
+    runs-on: ubuntu-latest
+    name: "Run Integration Test"
+    needs: [ ktlint ]
+    steps:
+      - uses: actions/checkout@v4
+        name: checkout branch
+
+      - uses: actions/setup-java@v4
+        name: Setup Java
+        with:
+          java-version: "17"
+          distribution: "temurin"
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: wrapper
+
+      - name: AndroidTest
+        run: |
+          ./gradlew pixel4api33DebugAndroidTest --console rich
+
+  wasm-build-check:
+    if: github.event.pull_request.merged != true
+    runs-on: ubuntu-latest
+    needs: [ ktlint ]
+    name: "Wasm build check"
+    steps:
+      - uses: actions/checkout@v4
+        name: checkout branch
+
+      - uses: actions/setup-java@v4
+        name: Setup Java
+        with:
+          java-version: "17"
+          distribution: "temurin"
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: wrapper
+
+      - name: "build"
+        run: |
+          ./gradlew :composeWasm:wasmJsBrowserDistribution
+
+  compare-screenshot:
+    name: "Compare screenshot"
+    runs-on: ubuntu-latest
+    needs: [ run-unit-test, run-instrumentation-test, wasm-build-check ]
+    outputs:
+      any_changed: ${{ steps.compare_screenshot_changed.output.exist_valid_files }}
+
+    permissions:
+      actions: read # for downloading artifacts
+      contents: write # for pushing screenshot-diff to companion branch
+      pull-requests: write # for creating a comment on pull requests
+
+    steps:
+      - uses: actions/checkout@v4
+        name: checkout branch
+
+      - uses: actions/setup-java@v4
+        name: Setup Java
+        with:
+          java-version: "17"
+          distribution: "temurin"
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: wrapper
+
+      - name: "Store main branch screenshot"
+        uses: ./.github/workflows/store_screenshot.yml
+
+      - uses: dawidd6/action-download-artifact@v6
+        name: "download main screenshot"
+        with:
+          name: screenshot-main
+          path: screenshot-main
+
+      - name: "Compare screenshot"
+        run: |
+          ./gradlew compareRoborazziDebug --stacktrace
+
+      - name: "Upload compare screenshot result"
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshot-diff
+          path: |
+            **/build/outputs/roborazzi
+
+      - name: "any changed?"
+        id: compare_screenshot_changed
+        shell: bash
+        run: |
+          # Find all the files ending with _compare.png
+          mapfile -t files_to_add < <(find . -type f -name "*_compare.png")
+          
+          # Check for invalid file names and add only valid ones
+          exist_valid_files="false"
+          for file in "${files_to_add[@]}"; do
+            if [[ $file =~ ^[a-zA-Z0-9_./-]+$ ]]; then
+              exist_valid_files="true"
+              break
+            fi
+          done
+          echo "exist_valid_files=$exist_valid_files" >> "$GITHUB_OUTPUT"
+
+      - id: switch-companion-branch
+        env:
+          BRANCH_NAME: companion_${{ github.event.workflow_run.head_branch }}
+        run: |
+          # orphan means it will create no history branch
+          git branch -D "$BRANCH_NAME" || true
+          git checkout --orphan "$BRANCH_NAME"
+          git rm -rf .
+
+      - id: push-screenshot-diff
+        shell: bash
+        if: steps.compare_screenshot_changed.outputs.exist_valid_files == 'true'
+        env:
+          BRANCH_NAME: companion_${{ github.event.workflow_run.head_branch }}
+        run: |
+          # Find all the files ending with _compare.png
+          files_to_add=$(find . -type f -name "*_compare.png")
+          
+          # Check for invalid file names and add only valid ones
+          for file in $files_to_add; do
+            if [[ "$file" =~ ^[a-zA-Z0-9_./-]+$ ]]; then
+              git add "$file"
+            fi
+          done
+          git config --global user.name ScreenshotBot
+          git config --global user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git commit -m "Add screenshot diff"
+          git push origin HEAD:"$BRANCH_NAME" -f
+
+      - id: generate-diff-reports
+        name: Generate diff reports
+        if: steps.check-if-there-are-valid-files.outputs.exist_valid_files == 'true'
+        env:
+          BRANCH_NAME: companion_${{ github.event.workflow_run.head_branch }}
+        shell: bash
+        run: |
+          # Find all the files ending with _compare.png in roborazzi folder
+          files=$(find . -type f -name "*_compare.png" | grep "roborazzi/" | grep -E "^[a-zA-Z0-9_./-]+$")
+          delimiter="$(openssl rand -hex 8)"
+          {
+            echo "reports<<${delimiter}"
+          
+            # Create markdown table header
+            echo "Snapshot diff report vs base branch: ${{ github.event.workflow_run.event  == 'pull_request' && github.event.workflow_run.event.pull_request.base.ref || github.event.repository.default_branch }}"
+            echo "| File name | Image |"
+            echo "|-------|-------|"
+          } >> "$GITHUB_OUTPUT"
+          
+          # Iterate over the files and create table rows
+          for file in $files; do
+            # Get the file name and insert newlines every 20 characters
+            fileName=$(basename "$file" | sed -r 's/(.{20})/\1<br>/g')
+            echo "| [$fileName](https://github.com/${{ github.repository }}/blob/$BRANCH_NAME/$file) | ![](https://github.com/${{ github.repository }}/blob/$BRANCH_NAME/$file?raw=true) |" >> "$GITHUB_OUTPUT"
+          done
+          echo "${delimiter}" >> "$GITHUB_OUTPUT"
+
+      - name: Find Comment
+        uses: peter-evans/find-comment@v3
+        id: fc
+        if: steps.generate-diff-reports.outputs.reports != ''
+        with:
+          issue-number: ${{ steps.get-pull-request-number.outputs.pull_request_number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: Snapshot diff report
+
+      - name: Add or update comment on PR
+        uses: peter-evans/create-or-update-comment@v4
+        if: steps.generate-diff-reports.outputs.reports != ''
+        with:
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          issue-number: ${{ steps.get-pull-request-number.outputs.pull_request_number }}
+          body: ${{ steps.generate-diff-reports.outputs.reports }}
+          edit-mode: replace

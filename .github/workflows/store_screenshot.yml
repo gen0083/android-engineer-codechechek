@@ -1,10 +1,10 @@
-name: StoreScreenshot
+name: "Store screenshot"
 
 on:
   push:
     branches:
       - main
-  pull_request:
+  workflow_call:
 
 permissions: { }
 
@@ -20,6 +20,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          refs: 'main'
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -42,23 +44,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: ${{ always() }}
         with:
-          name: screenshot
+          name: screenshot-main
           path: |
             **/build/outputs/roborazzi
-          retention-days: 30
-
-      - uses: actions/upload-artifact@v4
-        if: ${{ always() }}
-        with:
-          name: screenshot-reports
-          path: |
-            **/build/reports
-          retention-days: 30
-
-      - uses: actions/upload-artifact@v4
-        if: ${{ always() }}
-        with:
-          name: screenshot-test-results
-          path: |
-            **/build/test-results
           retention-days: 30
