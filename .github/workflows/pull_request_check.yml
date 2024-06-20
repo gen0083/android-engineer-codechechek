@@ -190,7 +190,7 @@ jobs:
         shell: bash
         run: |
           # Find all the files ending with _compare.png
-          mapfile -t files_to_add < <(find . -type f -name "*_compare.png")
+          mapfile -t files_to_add < <(find ./**/build/outputs/roborazzi -type f -name "*_compare.png")
           
           # Check for invalid file names and add only valid ones
           exist_valid_files="false"
@@ -221,7 +221,7 @@ jobs:
           BRANCH_NAME: companion_${{ github.head_ref }}
         run: |
           # Find all the files ending with _compare.png
-          files_to_add=$(find . -type f -name "*_compare.png")
+          files_to_add=$(find ./**/build/outputs/roborazzi -type f -name "*_compare.png")
           
           # Check for invalid file names and add only valid ones
           for file in $files_to_add; do
@@ -242,7 +242,7 @@ jobs:
         shell: bash
         run: |
           # Find all the files ending with _compare.png in roborazzi folder
-          files=$(find . -type f -name "*_compare.png" | grep "roborazzi/" | grep -E "^[a-zA-Z0-9_./-]+$")
+          files=$(find ./**/build/outputs/roborazzi -type f -name "*_compare.png")
           delimiter="$(openssl rand -hex 8)"
           {
             echo "reports<<${delimiter}"
