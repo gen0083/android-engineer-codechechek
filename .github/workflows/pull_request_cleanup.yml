@@ -12,4 +12,4 @@ jobs:
     steps:
       - name: Cleanup outdated companion branches
         run: |
-          git push origin --delete "companion_${{ github.ref_name }}"
+          git push origin --delete "companion_${{ github.head_ref }}"
