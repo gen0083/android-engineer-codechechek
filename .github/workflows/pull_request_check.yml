@@ -130,8 +130,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          ref: 'main'
 
       - uses: actions/setup-java@v4
         name: Setup Java
@@ -143,26 +141,6 @@ jobs:
         uses: gradle/actions/setup-gradle@v3
         with:
           gradle-version: wrapper
-
-      - name: record screenshot
-        id: record-test
-        run: |
-          # Use --rerun-tasks to disable cache for test task
-          ./gradlew recordRoborazziDebug --stacktrace --rerun-tasks
-
-      - name: "store screenshot on main"
-        uses: actions/upload-artifact@v4
-        if: ${{ always() }}
-        with:
-          name: screenshot-main
-          path: |
-            **/build/outputs/roborazzi
-          retention-days: 30
-
-      - uses: actions/checkout@v4
-        name: checkout branch
-        with:
-          ref: ${{ github.event.workflow_run.head_branch }}
 
       - uses: dawidd6/action-download-artifact@v6
         continue-on-error: true
@@ -190,7 +168,7 @@ jobs:
         shell: bash
         run: |
           # Find all the files ending with _compare.png
-          mapfile -t files_to_add < <(find . -type f -name "*_compare.png")
+          mapfile -t files_to_add < <(find ./**/build/outputs/roborazzi -type f -name "*_compare.png")
           
           # Check for invalid file names and add only valid ones
           exist_valid_files="false"
@@ -221,7 +199,7 @@ jobs:
           BRANCH_NAME: companion_${{ github.head_ref }}
         run: |
           # Find all the files ending with _compare.png
-          files_to_add=$(find . -type f -name "*_compare.png")
+          files_to_add=$(find ./**/build/outputs/roborazzi -type f -name "*_compare.png")
           
           # Check for invalid file names and add only valid ones
           for file in $files_to_add; do
@@ -242,7 +220,7 @@ jobs:
         shell: bash
         run: |
           # Find all the files ending with _compare.png in roborazzi folder
-          files=$(find . -type f -name "*_compare.png" | grep "roborazzi/" | grep -E "^[a-zA-Z0-9_./-]+$")
+          files=$(find ./**/build/outputs/roborazzi -type f -name "*_compare.png")
           delimiter="$(openssl rand -hex 8)"
           {
             echo "reports<<${delimiter}"
@@ -264,9 +242,8 @@ jobs:
       - name: Find Comment
         uses: peter-evans/find-comment@v3
         id: fc
-        if: steps.generate-diff-reports.outputs.reports != ''
         with:
-          issue-number: ${{ steps.get-pull-request-number.outputs.pull_request_number }}
+          issue-number: ${{ github.event.number }}
           comment-author: 'github-actions[bot]'
           body-includes: Snapshot diff report
 
@@ -275,6 +252,17 @@ jobs:
         if: steps.generate-diff-reports.outputs.reports != ''
         with:
           comment-id: ${{ steps.fc.outputs.comment-id }}
-          issue-number: ${{ steps.get-pull-request-number.outputs.pull_request_number }}
+          issue-number: ${{ github.event.number }}
           body: ${{ steps.generate-diff-reports.outputs.reports }}
           edit-mode: replace
+
+      - name: "Delete comment"
+        if: steps.generate-diff-reports.outputs.reports == '' && steps.fc.outputs.comment-id != ''
+        shell: bash
+        run: |
+          curl -L \
+            -X DELETE \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            https://api.github.com/repos/${{ github.repository }}/issues/comments/${{ steps.fc.outputs.comment-id }}
