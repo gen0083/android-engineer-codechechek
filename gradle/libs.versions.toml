@@ -66,7 +66,7 @@ androidxComposeTooling = { module = "androidx.compose.ui:ui-tooling", version = 
 androidxComposeTest = { module = "androidx.compose.ui:ui-test-junit4", version = "1.6.8" }
 androidxComposeManifest = { module = "androidx.compose.ui:ui-test-manifest", version = "1.6.8" }
 androidxActivityCompose = { module = "androidx.activity:activity-compose", version = "1.9.0" }
-androidxFragmentCompose = { module = "androidx.fragment:fragment-compose", version = "1.7.1" }
+androidxFragmentCompose = { module = "androidx.fragment:fragment-compose", version = "1.8.0" }
 # Voyager
 voyagerNavigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager" }
 voyagerScreenModel = { module = "cafe.adriel.voyager:voyager-screenmodel", version.ref = "voyager" }
