@@ -11,7 +11,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: "Check branch exist"
+        id: branch_check
+        run: |
+          branch_is_exist=$(
+            git fetch origin companion_${{ github.head_ref }} && 
+            echo true || echo false
+          )
+          echo "exist_branch=${branch_is_exist}" >> "$GITHUB_OUTPUT"
+
       - name: Cleanup outdated companion branches
+        if: steps.branch_check.outputs.exist_branch == 'true'
         shell: bash
         run: |
           git push origin --delete "companion_${{ github.head_ref }}"
