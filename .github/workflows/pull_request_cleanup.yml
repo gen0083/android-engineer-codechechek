@@ -7,9 +7,11 @@ on:
 jobs:
   delete-compare-branch:
     runs-on: ubuntu-latest
-    if:
     name: "cleanup compare diff branch"
     steps:
+      - uses: actions/checkout@v4
+
       - name: Cleanup outdated companion branches
+        shell: bash
         run: |
           git push origin --delete "companion_${{ github.head_ref }}"
