@@ -27,6 +27,18 @@
       ],
       "groupName": "patch version up",
       "automerge": true
+    },
+    {
+      "matchPackagePatterns": [
+        "androidx"
+      ],
+      "changelogUrl": "https://developer.android.com/jetpack/androidx/versions/all-channel"
+    },
+    {
+      "matchPackagePrefixes": [
+        "androidx.test"
+      ],
+      "changelogUrl": "https://developer.android.com/jetpack/androidx/releases/test"
     }
   ]
 }
