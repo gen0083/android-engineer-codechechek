@@ -10,7 +10,7 @@ koin = "3.6.0-wasm-alpha2"
 koinAnnotation = "1.3.1"
 voyager = "1.1.0-beta02"
 coil3 = "3.0.0-alpha08"
-roborazzi = "1.20.0"
+roborazzi = "1.29.0"
 
 [libraries]
 coil3 = { module = "io.coil-kt.coil3:coil", version.ref = "coil3" }
