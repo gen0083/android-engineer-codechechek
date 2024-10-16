@@ -60,7 +60,7 @@ koinAnnotation = { module = "io.insert-koin:koin-annotations", version.ref = "ko
 koinKspCompiler = { module = "io.insert-koin:koin-ksp-compiler", version.ref = "koinAnnotation" }
 # compose
 androidxComposeMaterial = { module = "androidx.compose.material3:material3", version = "1.2.1" }
-androidxComposeFoundation = { module = "androidx.compose.foundation:foundation", version = "1.6.8" }
+androidxComposeFoundation = { module = "androidx.compose.foundation:foundation", version = "1.7.4" }
 androidxComposeToolingPreview = { module = "androidx.compose.ui:ui-tooling-preview", version = "1.6.8" }
 androidxComposeTooling = { module = "androidx.compose.ui:ui-tooling", version = "1.6.8" }
 androidxComposeTest = { module = "androidx.compose.ui:ui-test-junit4", version = "1.6.8" }
