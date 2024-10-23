@@ -1,15 +1,15 @@
 [versions]
 androidGradlePlugin = "8.4.1"
-kotlin = "2.0.0"
-ksp = "2.0.0-1.0.23"
+kotlin = "2.0.21"
+ksp = "2.0.21-1.0.26"
 javaVersion = "17"
 
 coroutine = "1.8.1"
-ktor = "3.0.0-wasm2"
+ktor = "3.0.0"
 koin = "3.6.0-wasm-alpha2"
 koinAnnotation = "1.3.1"
-voyager = "1.1.0-beta02"
-coil3 = "3.0.0-alpha08"
+voyager = "1.1.0-beta03"
+coil3 = "3.0.0-rc01"
 roborazzi = "1.20.0"
 
 [libraries]
@@ -44,8 +44,8 @@ ktorClientSerialization = { module = "io.ktor:ktor-serialization-kotlinx-json", 
 
 kotlinTest = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 kotestAssertion = { module = "io.kotest:kotest-assertions-core", version = "5.9.1" }
-kotlinxSerializationJson = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version = "1.7.1" }
-kotlinxDatetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version = "0.6.0" }
+kotlinxSerializationJson = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version = "1.7.3" }
+kotlinxDatetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version = "0.6.1" }
 
 koinCore = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 koinTest = { module = "io.insert-koin:koin-test", version.ref = "koin" }
@@ -65,8 +65,8 @@ androidxComposeToolingPreview = { module = "androidx.compose.ui:ui-tooling-previ
 androidxComposeTooling = { module = "androidx.compose.ui:ui-tooling", version = "1.6.8" }
 androidxComposeTest = { module = "androidx.compose.ui:ui-test-junit4", version = "1.6.8" }
 androidxComposeManifest = { module = "androidx.compose.ui:ui-test-manifest", version = "1.6.8" }
-androidxActivityCompose = { module = "androidx.activity:activity-compose", version = "1.9.0" }
-androidxFragmentCompose = { module = "androidx.fragment:fragment-compose", version = "1.8.1" }
+androidxActivityCompose = { module = "androidx.activity:activity-compose", version = "1.9.3" }
+androidxFragmentCompose = { module = "androidx.fragment:fragment-compose", version = "1.8.4" }
 # Voyager
 voyagerNavigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager" }
 voyagerScreenModel = { module = "cafe.adriel.voyager:voyager-screenmodel", version.ref = "voyager" }
