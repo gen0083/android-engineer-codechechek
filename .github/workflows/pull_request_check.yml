@@ -30,7 +30,7 @@ jobs:
       - uses: actions/setup-java@v4
         name: Setup Java
         with:
-          java-version: "17"
+          java-version: "17.0.20+101"
           distribution: "temurin"
 
       - name: "Ktint set up"
@@ -56,7 +56,7 @@ jobs:
       - uses: actions/setup-java@v4
         name: Setup Java
         with:
-          java-version: "17"
+          java-version: "17.0.20+101"
           distribution: "temurin"
 
       - name: Setup Gradle
@@ -103,7 +103,7 @@ jobs:
       - uses: actions/setup-java@v4
         name: Setup Java
         with:
-          java-version: "17"
+          java-version: "17.0.20+101"
           distribution: "temurin"
 
       - name: Setup Gradle
@@ -134,7 +134,7 @@ jobs:
       - uses: actions/setup-java@v4
         name: Setup Java
         with:
-          java-version: "17"
+          java-version: "17.0.20+101"
           distribution: "temurin"
 
       - name: Setup Gradle
